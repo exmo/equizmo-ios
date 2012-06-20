@@ -1,6 +1,4 @@
 equizmo-ws
 ==========
 
-Projeto JEE 6 para publição de serviços na OpenShift para os aplicativos de Quiz. 
-
-Teste
+Projeto JEE 6 para publicação de serviços na OpenShift para os aplicativos de Quiz. 
