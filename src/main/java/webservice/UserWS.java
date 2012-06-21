@@ -22,13 +22,12 @@ public class UserWS {
 	}	
 
 	@WebMethod
-	@WebResult(name="user")
+	@WebResult(name="user", partName="usuarios")
 	public  ArrayList<User> list(){
 		return bc.list();
 	}	
 	
 	@WebMethod
-	
 	public int ranking(@WebParam(name="email") String email){
 		return bc.ranking(email);
 	}		
