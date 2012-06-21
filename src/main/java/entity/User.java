@@ -5,6 +5,10 @@ public class User {
 	private String name;
 	private Float latitude;
 	private Float longitude;
+
+	public User() {
+		super();
+	}
 	
 	public User(String email, String name, Float latitude, Float longitude) {
 		super();
