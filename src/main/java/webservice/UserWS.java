@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.servlet.annotation.WebServlet;
 
@@ -21,11 +22,13 @@ public class UserWS {
 	}	
 
 	@WebMethod
-	public ArrayList<User> list(){
+	@WebResult(name="user")
+	public  ArrayList<User> list(){
 		return bc.list();
 	}	
 	
 	@WebMethod
+	
 	public int ranking(@WebParam(name="email") String email){
 		return bc.ranking(email);
 	}		
