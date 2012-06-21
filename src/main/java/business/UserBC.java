@@ -11,13 +11,13 @@ public class UserBC {
 	
 	public boolean login(String email, String name, Float latitude, Float longitude) {
 		
-		if (userList.get(email) != null)
+		if (userList.get(email) == null)
 			userList.put(email, new User(email, name, latitude, longitude));
 		return true;
 	}
 
 	public ArrayList<User> list() {
-		return (ArrayList<User>) userList.values();
+		return new ArrayList<User>(userList.values());
 	}
 
 	public int ranking(String email) {
