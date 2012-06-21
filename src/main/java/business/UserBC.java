@@ -20,4 +20,8 @@ public class UserBC {
 		return (ArrayList<User>) userList.values();
 	}
 
+	public int ranking(String email) {
+		return 1;
+	}
+
 }

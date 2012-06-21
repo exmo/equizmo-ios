@@ -24,4 +24,9 @@ public class UserWS {
 	public ArrayList<User> list(){
 		return bc.list();
 	}	
+	
+	@WebMethod
+	public int ranking(@WebParam(name="email") String email){
+		return bc.ranking(email);
+	}		
 }
