@@ -17,10 +17,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self customizeAppearance];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.viewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController_iPhone" bundle:nil];
+        
     } else {
         self.viewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController_iPad" bundle:nil];
     }
@@ -54,6 +57,40 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark Customizações
+- (void)customizeAppearance
+{
+    
+//    UIImage *background = [UIImage imageNamed:@"background"]; 
+//    [[UIView appearance] setBackgroundImage:background];
+    
+    // Create resizable images
+    //    UIImage *gradientImage44 = [[UIImage imageNamed:@"barra_de_acao_v"] 
+    //                                resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    //    UIImage *gradientImage32 = [[UIImage imageNamed:@"barra_de_acao_v"] 
+    //                                resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    //    
+    //    // Set the background image for *all* UINavigationBars
+    //    [[UINavigationBar appearance] setBackgroundImage:gradientImage44 
+    //                                       forBarMetrics:UIBarMetricsDefault];
+    //    [[UINavigationBar appearance] setBackgroundImage:gradientImage32 
+    //                                       forBarMetrics:UIBarMetricsLandscapePhone];
+    //    
+    //    
+    //    UIImage *buttonBack30 = [[UIImage imageNamed:@"bt_dashboard_v"]         resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    //                            // resizableImageWithCapInsets:UIEdgeInsetsMake(0, 13, 0, 5)];
+    //    UIImage *buttonBack24 = [[UIImage imageNamed:@"bt_dashboard_h"] 
+    //                             resizableImageWithCapInsets:UIEdgeInsetsMake(0, 12, 0, 5)];
+    //    
+    //    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:buttonBack30 
+    //                                                      forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    //    
+    //    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:buttonBack24 
+    //                                                      forState:UIControlStateNormal barMetrics:UIBarMetricsLandscapePhone];
+    //    
+    
 }
 
 @end
