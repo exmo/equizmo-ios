@@ -21,10 +21,6 @@ public class Question {
 		return propositions;
 	}
 	
-	public void setPropositions(String[] propositions) {
-		setPropositions(Arrays.asList(propositions));
-	}
-	
 	public void setPropositions(List<String> propositions) {
 		this.propositions = propositions;
 	}

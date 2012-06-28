@@ -24,10 +24,6 @@ public class Quiz {
 		setQuestions(Arrays.asList(questions));
 	}
 	
-	public void setQuestions(Question[] questions) {
-		setQuestions(Arrays.asList(questions));
-	}
-	
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
