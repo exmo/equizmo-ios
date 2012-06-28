@@ -27,11 +27,18 @@ http://quiz-exmo.rhcloud.com/user?wsdl
 * `list`: lista todos os usuários cadastrados na base
 * `ranking`: retorna a posição do usuário no raking geral
 
-### Game
+### Category
+
+Serviços relacionados as categorias do quiz.
+http://quiz-exmo.rhcloud.com/category?wsdl
+
+* `add`: adiciona uma nova categorias de jogo. Retorna `true` se incluida com sucesso; `false` se a categoria já exitia previamente.
+* `list`: retorna uma lista das categorias de jogo
+
+### Quiz
 
 Serviços relacionados aos quiz.
-http://quiz-exmo.rhcloud.com/game?wsdl
+http://quiz-exmo.rhcloud.com/quiz?wsdl
 
-* `listCategories`: retorna uma lista das categorias de jogo
-* `quiz`: retorna um jogo para a categoria informada
-* `ranking`: retorna uma lista com os 5 primeiros colocados no ranking, em ordem crescente
+* `add`: adiciona um novo quiz
+* `quiz`: obtém um quiz para a categoria informada
