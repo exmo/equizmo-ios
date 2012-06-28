@@ -13,12 +13,12 @@ public class QuizWS {
 	@Inject QuizBC bc;
 	
 	@WebMethod
-	public boolean add(Quiz quiz) {
+	public boolean addQuiz(Quiz quiz) {
 		return bc.add(quiz);
 	}
 
 	@WebMethod
-	public Quiz quiz(String category) {
+	public Quiz newQuiz(String category) {
 		return bc.quiz(category);
 	}	
 }
