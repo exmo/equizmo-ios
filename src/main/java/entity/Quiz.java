@@ -16,15 +16,19 @@ public class Quiz {
 		this.category = category;
 	}
 	
-	public List<Question> getQuestions() {
-		return questions;
-	}
+//	public List<Question> getQuestions() {
+//		return questions;
+//	}
+//	
+//	public void setQuestions(List<Question> questions) {
+//		this.questions = questions;
+//	}
 	
-	public void setPropositions(Question[] questions) {
-		setQuestions(Arrays.asList(questions));
+	public Question[] getQuestions() {
+		return (Question[]) questions.toArray();
 	}
-	
-	public void setQuestions(List<Question> questions) {
-		this.questions = questions;
+
+	public void setQuestions(Question[] questions) {
+		this.questions = Arrays.asList(questions);
 	}
 }
