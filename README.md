@@ -15,3 +15,16 @@ Acessando o projeto
 
 O projeto está disponível em http://quiz-exmo.rhcloud.com/
 
+Web Services
+----------
+
+You can copy samples files to your Gaelyk app from [here](https://github.com/sergerehem/gaelyk-i18n-plugin/tree/master/usage/WEB-INF).
+
+### User
+
+Serviços relacionados aos usuários do quiz.
+http://quiz-exmo.rhcloud.com/user?wsdl
+
+* `login`: cadastra nome e e-mail na lista de usuários do sistema
+* `list`: lista todos os usuários cadastrados na base
+* `ranking`: retorna a posição do usuário no raking geral
