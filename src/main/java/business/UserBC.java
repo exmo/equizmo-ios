@@ -1,27 +1,24 @@
 package business;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
+import javax.inject.Inject;
+
+import persistence.UserDAO;
 import entity.User;
 
 public class UserBC {
-	private static Map<String, User> userList = new HashMap<String, User>();
+	@Inject UserDAO dao;
 	
 	public boolean login(String email, String name, Float latitude, Float longitude) {
-		
-		if (userList.get(email) == null)
-			userList.put(email, new User(email, name, latitude, longitude));
-		return true;
+		return dao.login(email, name, latitude, longitude);
 	}
 
 	public ArrayList<User> list() {
-		return new ArrayList<User>(userList.values());
+		return dao.list();
 	}
 
 	public int ranking(String email) {
-		return 1;
+		return dao.ranking(email);
 	}
-
 }
