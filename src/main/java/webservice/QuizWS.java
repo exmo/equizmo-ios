@@ -8,18 +8,18 @@ import javax.servlet.annotation.WebServlet;
 
 import business.QuizBC;
 import entity.Quiz;
-@WebService
+@WebService(targetNamespace="http://quiz-exmo.rhcloud.com/quiz")
 @WebServlet("/quiz")
 public class QuizWS {
 	@Inject QuizBC bc;
 	
 	@WebMethod
-	public boolean addQuiz(@WebParam(name="quiz") Quiz quiz) {
+	public boolean addQuiz(@WebParam(name="quiz",targetNamespace="http://quiz-exmo.rhcloud.com/quiz") Quiz quiz) {
 		return bc.add(quiz);
 	}
 
 	@WebMethod
-	public Quiz giveMeAQuiz(@WebParam(name="category") String category) {
+	public Quiz giveMeAQuiz(@WebParam(name="category", targetNamespace="http://quiz-exmo.rhcloud.com/quiz") String category) {
 		return bc.quiz(category);
 	}	
 }
