@@ -6,7 +6,8 @@ import java.util.List;
 
 public class Quiz {
 	private String category;
-	private List<Question> questions = new ArrayList<Question>();
+	//private List<Question> questions = new ArrayList<Question>();
+	private Question[] questions; // = new ArrayList<Question>();
 	
 	public String getCategory() {
 		return category;
@@ -16,19 +17,11 @@ public class Quiz {
 		this.category = category;
 	}
 	
-//	public List<Question> getQuestions() {
-//		return questions;
-//	}
-//	
-//	public void setQuestions(List<Question> questions) {
-//		this.questions = questions;
-//	}
-	
 	public Question[] getQuestions() {
-		return (Question[]) questions.toArray();
+		return questions; //(Question[]) questions.toArray();
 	}
 
 	public void setQuestions(Question[] questions) {
-		this.questions = Arrays.asList(questions);
+		this.questions = questions; //Arrays.asList(questions);
 	}
 }

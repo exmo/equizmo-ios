@@ -5,6 +5,13 @@
 	<packaging>war</packaging>
 	<version>1.0</version>
 	<name>equizmo-ws</name>
+	
+	<parent>
+		<groupId>br.gov.frameworkdemoiselle</groupId>
+		<artifactId>demoiselle-jsf-parent</artifactId>
+		<version>2.2.2</version>
+	</parent>
+		
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.6</maven.compiler.source>
@@ -83,4 +90,11 @@
 	</profiles>
 	<artifactId>equizmo-ws</artifactId>
 	<url>http://quiz-exmo.rhcloud.com/</url>
+	
+	<repositories>
+		<repository>
+			<id>demoiselle.sourceforge.net-release</id>
+			<url>http://demoiselle.sourceforge.net/repository/release</url>
+		</repository>
+	</repositories>	
 </project>
