@@ -21,9 +21,4 @@ public class CategoryWS {
 	public List<String> list(){
 		return bc.list();
 	}	
-
-	@WebMethod
-	public boolean add(@WebParam(name="category") String category){
-		return bc.add(category);
-	}	
 }
