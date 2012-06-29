@@ -7,13 +7,13 @@
 	<version>1.0</version>
 	<name>equizmo-ws</name>
 	<url>http://quiz-exmo.rhcloud.com/</url>
-		
+
 	<parent>
 		<groupId>br.gov.frameworkdemoiselle</groupId>
 		<artifactId>demoiselle-jsf-parent</artifactId>
 		<version>2.2.2</version>
 	</parent>
-		
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.6</maven.compiler.source>
@@ -28,6 +28,11 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>br.gov.frameworkdemoiselle</groupId>
+			<artifactId>demoiselle-junit</artifactId>
+			<version>2.1.2</version>			
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.8.1</version>
@@ -36,36 +41,36 @@
 	</dependencies>
 	<profiles>
 		<profile>
-            <!-- The default profile skips all tests, though you can tune it 
-                to run just unit tests based on a custom pattern -->
-            <!-- Seperate profiles are provided for running all tests, including 
-                Arquillian tests that execute in the specified container -->
-            <id>default</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
-                        <configuration>
-                            <!-- Ignore the jboss-web.xml. This is needed to deploy the Web service into the root context.
-                                This is only needed by Openshift -->
-                            <packagingExcludes>**/jboss-web.xml</packagingExcludes>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.4.3</version>
-                        <configuration>
-                            <skip>true</skip>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-	
+			<!-- The default profile skips all tests, though you can tune it to run 
+				just unit tests based on a custom pattern -->
+			<!-- Seperate profiles are provided for running all tests, including Arquillian 
+				tests that execute in the specified container -->
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.1.1</version>
+						<configuration>
+							<!-- Ignore the jboss-web.xml. This is needed to deploy the Web service 
+								into the root context. This is only needed by Openshift -->
+							<packagingExcludes>**/jboss-web.xml</packagingExcludes>
+						</configuration>
+					</plugin>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.4.3</version>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
 		<profile>
 			<!-- When built in OpenShift the 'openshift' profile will be used when 
 				invoking mvn. -->
@@ -90,11 +95,11 @@
 			</build>
 		</profile>
 	</profiles>
-	
+
 	<repositories>
 		<repository>
 			<id>demoiselle.sourceforge.net-release</id>
 			<url>http://demoiselle.sourceforge.net/repository/release</url>
 		</repository>
-	</repositories>	
+	</repositories>
 </project>
