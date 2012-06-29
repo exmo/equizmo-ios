@@ -14,6 +14,8 @@ public class CategoryDAO {
 	}
 
 	public List<String> list() {
+		
+		//"https://raw.github.com/exmo/exmo.github.com/master/equizmo/categories.txt"
 		return categoryList;
 	}
 
