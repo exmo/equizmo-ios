@@ -5,7 +5,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import br.gov.frameworkdemoiselle.stereotype.BusinessController;
+import br.gov.frameworkdemoiselle.stereotype.ViewController;
+
 @Path("/meuamigo/{maneh}")
+@ViewController
 public class Rest {
 
 	@GET
