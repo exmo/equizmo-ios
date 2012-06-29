@@ -2,8 +2,6 @@ package persistence;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.util.Arrays;
-
 import org.junit.Test;
 
 import entity.Question;
