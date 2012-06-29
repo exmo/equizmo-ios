@@ -17,7 +17,7 @@ public class UserWS {
 	@Inject UserBC bc;
 	
 	@WebMethod
-	public boolean login(@WebParam(name="email") String email, @WebParam(name="name") String name, @WebParam(name="latitude") Float latitude, @WebParam(name="longituge") Float longitude){
+	public boolean login(@WebParam(name="email") String email, @WebParam(name="name") String name, @WebParam(name="latitude") Float latitude, @WebParam(name="longitude") Float longitude){
 		return bc.login(email, name, latitude, longitude);
 	}	
 
