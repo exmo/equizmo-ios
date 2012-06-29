@@ -2,10 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.gov.serpro</groupId>
+	<artifactId>equizmo-ws</artifactId>
 	<packaging>war</packaging>
 	<version>1.0</version>
 	<name>equizmo-ws</name>
-	
+	<url>http://quiz-exmo.rhcloud.com/</url>
+		
 	<parent>
 		<groupId>br.gov.frameworkdemoiselle</groupId>
 		<artifactId>demoiselle-jsf-parent</artifactId>
@@ -74,7 +76,7 @@
 			<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
 			<id>openshift</id>
 			<build>
-				<finalName>demo</finalName>
+				<finalName>equizmo-ws</finalName>
 				<plugins>
 					<plugin>
 						<artifactId>maven-war-plugin</artifactId>
@@ -88,8 +90,6 @@
 			</build>
 		</profile>
 	</profiles>
-	<artifactId>equizmo-ws</artifactId>
-	<url>http://quiz-exmo.rhcloud.com/</url>
 	
 	<repositories>
 		<repository>
