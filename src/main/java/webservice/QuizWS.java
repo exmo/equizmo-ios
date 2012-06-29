@@ -3,6 +3,7 @@ package webservice;
 import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.servlet.annotation.WebServlet;
 
@@ -17,11 +18,12 @@ public class QuizWS {
 	public boolean addQuiz(@WebParam(name="quiz") Quiz quiz) {
 		return bc.add(quiz);
 	}
-//
-//	@WebMethod
-//	public Quiz giveMeAQuiz(@WebParam(name="category", targetNamespace="http://quiz-exmo.rhcloud.com/quiz") String category) {
-//		return bc.quiz(category);
-//	}	
+
+	@WebMethod
+	@WebResult(name="quiz")
+	public Quiz giveMeAQuiz(@WebParam(name="category") String category) {
+		return bc.quiz(category);
+	}	
 }
 
 
