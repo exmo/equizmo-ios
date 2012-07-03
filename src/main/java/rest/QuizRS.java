@@ -8,12 +8,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import br.gov.frameworkdemoiselle.stereotype.ViewController;
+import br.gov.frameworkdemoiselle.stereotype.Controller;
 import business.QuizBC;
 import entity.Quiz;
 
 @Path("/quiz")
-@ViewController
+@Controller
 public class QuizRS {
 	@Inject QuizBC bc;
 	
