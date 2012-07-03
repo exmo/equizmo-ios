@@ -9,16 +9,11 @@ import javax.servlet.annotation.WebServlet;
 
 import business.QuizBC;
 import entity.Quiz;
-@WebService//(targetNamespace="http://quiz-exmo.rhcloud.com/quiz")
+@WebService
 @WebServlet("/quiz")
 public class QuizWS {
 	@Inject QuizBC bc;
 	
-	@WebMethod
-	public boolean addQuiz(@WebParam(name="quiz") Quiz quiz) {
-		return bc.add(quiz);
-	}
-
 	@WebMethod
 	@WebResult(name="quiz")
 	public Quiz giveMeAQuiz(@WebParam(name="category") String category) {
