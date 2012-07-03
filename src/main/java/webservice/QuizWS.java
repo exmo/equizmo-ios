@@ -28,5 +28,3 @@ public class QuizWS {
 		return bc.listCategories();
 	}		
 }
-
-
