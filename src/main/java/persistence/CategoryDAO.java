@@ -1,14 +1,10 @@
 package persistence;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.gov.frameworkdemoiselle.annotation.Startup;
 
-import entity.Quiz;
-
 import util.FileUtil;
-import util.XMLParserUtil;
 
 public class CategoryDAO {
 	List<String> categoryList;

@@ -16,6 +16,7 @@ import entity.Quiz;
 public class QuizDAO {
 	private static Map<String, Quiz> quizMap = new HashMap<String, Quiz>();
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Startup
 	public void loadQuizes() {
 		String xml = FileUtil.readRemote("https://raw.github.com/exmo/exmo.github.com/master/equizmo/quiz.xml");

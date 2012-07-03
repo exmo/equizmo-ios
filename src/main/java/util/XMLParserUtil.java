@@ -16,6 +16,7 @@ public class XMLParserUtil {
 	//private	static XStream xstream = new XStream(new StaxDriver());
 	private	static XStream xstream = new XStream(new DomDriver("UTF-8"));
 	
+	@SuppressWarnings("rawtypes")
 	public static String write(Object o, HashMap<String, Class> aliases) { //, HashMap<String, Class> collections) {
     	xstream = new XStream(new StaxDriver());
     	for (Map.Entry<String,Class> alias : aliases.entrySet()) { 	
@@ -24,6 +25,7 @@ public class XMLParserUtil {
     	return xstream.toXML(o);
    }
 
+	@SuppressWarnings("rawtypes")
 	public static Object read(String xml, HashMap<String, Class> aliases) { //, HashMap<String, Class> collections) {
     	
     	for (Map.Entry<String,Class> alias : aliases.entrySet()) { 	

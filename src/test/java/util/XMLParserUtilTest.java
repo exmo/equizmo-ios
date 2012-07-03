@@ -14,9 +14,11 @@ import entity.Quiz;
 
 public class XMLParserUtilTest {
 	private static List<Quiz> quizList = new ArrayList<Quiz>();
+	@SuppressWarnings("rawtypes")
 	private static HashMap<String, Class> aliases = new HashMap<String, Class>();
 	private static String xml;
 	
+	@SuppressWarnings("rawtypes")
 	@BeforeClass
 	public static void setUp() {
 		Quiz quiz1 = new Quiz("c1", new Question[] {
@@ -59,12 +61,10 @@ public class XMLParserUtilTest {
 		assertEquals(xml, result);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testReadXML() {
-		List<Quiz> expectedQuizList = new ArrayList<Quiz>();
-		
-		expectedQuizList = (ArrayList<Quiz>)XMLParserUtil.read(xml, aliases);
-		
+		List<Quiz> expectedQuizList = ((ArrayList<Quiz>)XMLParserUtil.read(xml, aliases));
 		Quiz q1 = expectedQuizList.get(0);
 		assertEquals("c1",q1.getCategory());
 		assertEquals("q1",q1.getQuestions()[0].getEnunciation());
