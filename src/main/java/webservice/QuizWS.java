@@ -1,5 +1,7 @@
 package webservice;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -19,6 +21,12 @@ public class QuizWS {
 	public Quiz giveMeAQuiz(@WebParam(name="category") String category) {
 		return bc.quiz(category);
 	}	
+	
+	@WebMethod
+	@WebResult(name="category")
+	public List<String> listCategories(){
+		return bc.listCategories();
+	}		
 }
 
 

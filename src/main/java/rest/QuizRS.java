@@ -1,5 +1,7 @@
 package rest;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,7 +20,20 @@ public class QuizRS {
 	@GET
 	@Path("/get/{category}")
 	@Produces("application/json; charset=UTF-8")
-	public Quiz giveMeAQuiz(@PathParam("category") String category) {
+	public Quiz giveMeAQuizAsJSON(@PathParam("category") String category) {
 		return bc.quiz(category);
 	}		
+	
+	@GET
+	@Path("/listCategories")
+	@Produces("application/json; charset=UTF-8")
+	public List<String> listCategories(){
+		return bc.listCategories();
+	}
+	
+	@GET
+	@Path("/refresh")
+	public void refresh() {
+		bc.refresh();
+	}
 }

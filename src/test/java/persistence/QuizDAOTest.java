@@ -1,14 +1,22 @@
 package persistence;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import javax.inject.Inject;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
 import entity.Question;
 import entity.Quiz;
 
+@RunWith(DemoiselleRunner.class)
 public class QuizDAOTest {
-
+	@Inject
+	QuizDAO dao;
+	
 	@Test
 	public void testAdd() {
 		QuizDAO dao = new QuizDAO();
@@ -34,6 +42,12 @@ public class QuizDAOTest {
 		dao.add(quiz);
 		
 		assertNotNull(dao.quiz("Category 1"));
+	}
+	
+	@Test
+	public void listCategories() {
+		System.out.println(dao.listCategories());
+		assertTrue(dao.listCategories().size() > 0);
 	}
 
 }
