@@ -17,7 +17,7 @@ public class QuizRS {
 	
 	@GET
 	@Path("/get/{category}")
-	@Produces("application/json")
+	@Produces("application/json; charset=UTF-8")
 	public Quiz giveMeAQuiz(@PathParam("category") String category) {
 		return bc.quiz(category);
 	}		
