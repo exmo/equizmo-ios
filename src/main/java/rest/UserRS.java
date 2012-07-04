@@ -1,11 +1,14 @@
 package rest;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
 import business.UserBC;
+import entity.User;
 
 @Path("/user")
 public class UserRS {
@@ -17,6 +20,12 @@ public class UserRS {
 	@Path("/addPoints/{email}/{points}")
 	public int addPoints(@PathParam("email") String email, @PathParam("points") int points) {
 		return bc.addPoints(email, points);
-	}		
+	}	
+	
+	@GET
+	@Path("/ranking/{offset}")
+	public List<User> ranking(@PathParam("offset") Integer offset) {
+		return bc.ranking(offset);
+	}	
 	
 }
