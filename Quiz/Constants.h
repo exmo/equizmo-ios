@@ -11,5 +11,6 @@
 
 #define VAR_NOME @"nome"
 #define VAR_EMAIL @"email"
+#define VAR_PONTOS @"pontos"
 
 #endif

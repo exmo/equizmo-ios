@@ -8,8 +8,10 @@
 
 #import "RankingViewController.h"
 #import "Usuario.h"
+#import "Ranking.h"
 #import "SelecionarCategoriaViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "LabelFormater.h"
 
 @interface RankingViewController ()
 
@@ -45,7 +47,14 @@
     
     Usuario  *usuario = (Usuario *)[lista objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [NSString stringWithFormat:@" %d - %@ (%f pontos)", (indexPath.row+1), usuario.nome, usuario.pontos];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSString *pontuacao = [formatter stringFromNumber:[NSNumber numberWithDouble:usuario.pontos]];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@" %d - %@ (%@ pontos)", (indexPath.row+1), usuario.nome, pontuacao];
+    
+    
+    //[LabelFormater resizeFontToFitLabel:cell.textLabel];
     
     return cell;
 }
@@ -78,23 +87,35 @@
     viewRanking.layer.masksToBounds = YES;
     viewRanking.layer.borderWidth = 3.0f;
     viewRanking.layer.borderColor = [UIColor whiteColor].CGColor; 
-    
-    // Do any additional setup after loading the view from its nib.
-    
-    Usuario *u1 = [[Usuario alloc] init];
-    u1.nome = @"Nome 1";
-    u1.pontos = 10.0;
 
-    Usuario *u2 = [[Usuario alloc] init];
-    u2.nome = @"Nome 2";
-    u2.pontos = 9.0;    
     
-    lista = [NSArray arrayWithObjects:u1, u2, nil ];
+    lista = [Ranking listarPrimeiros:5];
     
     // Do any additional setup after loading the view, typically from a nib.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     labelNome.text = [defaults objectForKey:@"nome"];
     
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    labelPontos.text = [formatter stringFromNumber:[NSNumber numberWithDouble:[[defaults objectForKey:VAR_PONTOS] doubleValue]]];
+    
+
+    
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    if(!lista){
+        lista = [Ranking listarPrimeiros:5];
+        Usuario *u = [[Usuario alloc]init];
+        [u loadCurrent];
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        labelPontos.text = [formatter stringFromNumber:[NSNumber numberWithDouble:u.pontos]];
+    }
 }
 
 - (void)viewDidUnload
@@ -117,6 +138,7 @@
 - (IBAction)iniciarPartida:(id)sender {
     SelecionarCategoriaViewController *categorias = [[SelecionarCategoriaViewController alloc] init];
     categorias.mainModel = self;
+    lista = nil;
     [self presentModalViewController:categorias animated:YES];
 }
 

@@ -10,6 +10,7 @@
 #import "Questao.h"
 #import <QuartzCore/QuartzCore.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "LabelFormater.h"
 
 @interface JogoViewController (){
     int indiceQuestaoAtual;
@@ -30,6 +31,7 @@
 @synthesize viewPerguntaRespostas;
 @synthesize viewPontuacao;
 @synthesize resultadoView;
+@synthesize totalPontos;
 
 @synthesize labelPontuacaoFinal;
 @synthesize tabelaResultadoFinal;
@@ -112,6 +114,7 @@
     [self setLabelPontuacaoFinal:nil];
     [self setTabelaRespostas:nil];
     [self setTabelaResultadoFinal:nil];
+    [self setTotalPontos:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -131,8 +134,8 @@
         if(indexPath.row == ([jogo.questoes count]-1)){
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-            NSString *totalPontos = [formatter stringFromNumber:[NSNumber numberWithDouble:[jogo pontuacao]]];
-            labelPontuacaoFinal.text =[NSString stringWithFormat:@"%@ pontos!",  totalPontos];
+            NSString *pontuacao = [formatter stringFromNumber:[NSNumber numberWithDouble:[jogo pontuacao]]];
+            labelPontuacaoFinal.text =[NSString stringWithFormat:@"%@ pontos!",  pontuacao];
             
             [labelPontuacaoFinal setHidden:NO];
         }else{
@@ -173,19 +176,19 @@
         cell.textLabel.font = [UIFont boldSystemFontOfSize:15.0];
         cell.textLabel.textColor = [UIColor whiteColor];
         [cell.textLabel sizeToFit];
+//        [self resizeFontToFitLabel: cell.textLabel];
         
         cell.detailTextLabel.text = [q.proposicoes objectAtIndex:q.respostaJogador];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
         cell.detailTextLabel.textColor = [UIColor whiteColor];
         [cell.detailTextLabel sizeToFit];
+//        [self resizeFontToFitLabel: cell.detailTextLabel];
         
         if([q estaCerto]){
             cell.imageView.image = [UIImage imageNamed:@"penguim"];
         }else {
             cell.imageView.image = [UIImage imageNamed:@"sid"];
         }
-        
-        NSLog(@"Montando a tabel de resultados... %@", q.pergunta);
         
         return cell;
     }
@@ -200,6 +203,8 @@
     NSString  *letra = [letras objectAtIndex:indexPath.row];
     NSString  *proposicao = [q.proposicoes objectAtIndex:indexPath.row];    
     cell.textLabel.text = [NSString stringWithFormat:@"%@) %@",letra, proposicao];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:15.0];
+    [LabelFormater resizeFontToFitLabel: cell.textLabel maxSize:15.0 minSize:10.0];
     
     return cell;
 }
@@ -210,15 +215,17 @@
         q.respostaJogador = indexPath.row;
         
         if(q.estaCerto){
+            [playerErrado stop];
             [playerCerto play]; 
         }else{
+            [playerCerto stop];
             [playerErrado play];
         }
         
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        NSString *totalPontos = [formatter stringFromNumber:[NSNumber numberWithDouble:[jogo pontuacao]]];
-        labelPontos.text = totalPontos;
+        NSString *pontuacao = [formatter stringFromNumber:[NSNumber numberWithDouble:[jogo pontuacao]]];
+        labelPontos.text = pontuacao;
         
 //        while([playerCerto isPlaying] || [playerErrado isPlaying]){
 //            // Espera o infeliz terminar o som!
@@ -231,20 +238,30 @@
 
 #pragma mark Metodos
 
+
+
 -(void) exibirProximaQuestao{
     indiceQuestaoAtual++;
     if(indiceQuestaoAtual < [jogo.questoes count]){
         Questao *q = [jogo.questoes objectAtIndex:indiceQuestaoAtual];
         labelPergunta.text =  q.pergunta;
+        [LabelFormater resizeFontToFitLabel:labelPergunta maxSize:20.0 minSize:15.0];
         labelNumeroDaPergunta.text = [NSString stringWithFormat:@"%d", indiceQuestaoAtual+1];
         [tabelaRespostas reloadData];
     }else {
         // Envia para o servidor e exibe o resultado;
+        
         [self encerrarJogo];
     }
 }
 
 - (void) encerrarJogo{
+    
+    int total = [jogo informarPontuacao];
+    
+    
+    
+    totalPontos.text = [NSString stringWithFormat:@"%i", total];
     
 //    [self.view addSubview:resultadoView];
     

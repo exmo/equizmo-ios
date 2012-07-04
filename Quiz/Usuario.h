@@ -17,6 +17,7 @@
 @property double pontos;
 
 -(void) saveAsCurrent;
+-(void) loadCurrent;
 
 - (void) logarWithCallback: (SEL) _method forInstance: (id) _instance;
 

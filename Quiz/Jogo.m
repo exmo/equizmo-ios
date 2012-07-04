@@ -9,7 +9,8 @@
 #import "Jogo.h"
 #import "NSDictionary+JSON.h"
 
-#define REST_ADDRESS @"http://quiz-exmo.rhcloud.com/rest/quiz/get/%@"
+#define REST_ADDRESS_GET_QUIZ @"http://quiz-exmo.rhcloud.com/rest/quiz/get/%@"
+#define REST_ADDRESS_ADD_POINTS @"http://quiz-exmo.rhcloud.com/rest/user/addPoints/%@/%i"
 
 
 @implementation Jogo
@@ -19,7 +20,7 @@
 - (void) prepararQuestoes{
     NSLog(@"Preparando as questões para a categoria: %@", categoria);    
     
-    NSDictionary *result = [NSDictionary dictionaryWithContentsOfJSONURLString: [NSString stringWithFormat: REST_ADDRESS, categoria ]];
+    NSDictionary *result = [NSDictionary dictionaryWithContentsOfJSONURLString: [NSString stringWithFormat: REST_ADDRESS_GET_QUIZ, categoria ]];
     
     NSArray *questions = [result objectForKey:@"questions"];
     
@@ -39,20 +40,28 @@
     questoes = listaQuestoes;
 }
 
+- (int) informarPontuacao{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *email = [defaults objectForKey:VAR_EMAIL];
+    
+    NSString *URL = [NSString stringWithFormat: REST_ADDRESS_ADD_POINTS, email, (int)[self pontuacao]];
+    NSLog(@"URL: %@", URL);
+                     
+    NSDictionary *result = [NSDictionary dictionaryWithContentsOfJSONURLString:URL];
+    
+    int total = [[result objectForKey:@"points"] intValue];
+    NSLog(@"Enviando os pontos %f, formando um total de %i", [self pontuacao], total);
+    
+    return total;
+}
+
 - (double) pontuacao{
-    
     double total = 0;
-    
     for (Questao *q in questoes) {
-        NSLog(@"Pergunta: %@ \n Respondeu: %d (%@ )e o certo era %d (%@)",q.pergunta, q.respostaJogador,[q.proposicoes objectAtIndex:q.respostaJogador], q.respostaCerta, [q.proposicoes objectAtIndex:q.respostaCerta]);
-        
         if([[NSNumber numberWithInt:q.respostaCerta] isEqualToNumber:[NSNumber numberWithInt:q.respostaJogador ]]){
-            total = total + 100;
+            total += 120;
         }
-        NSLog(@"Total %f",total);
-        
     }
-    
     return total;
 }
 

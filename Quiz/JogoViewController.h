@@ -25,6 +25,7 @@
 @property (retain, nonatomic) IBOutlet UIView *viewPerguntaRespostas;
 @property (retain, nonatomic) IBOutlet UIView *viewPontuacao;
 @property (strong, nonatomic) IBOutlet UIView *resultadoView;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *totalPontos;
 
 @property NSString *categoria;
 

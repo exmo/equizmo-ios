@@ -16,5 +16,6 @@
 
 - (void) prepararQuestoes;
 - (double) pontuacao;
+- (int) informarPontuacao;
 
 @end

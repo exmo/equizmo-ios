@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3910E9DD15A3636600FF54A9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3910E9DC15A3636600FF54A9 /* libz.dylib */; };
 		3910E9E615A4699000FF54A9 /* NSDictionary+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3910E9E515A4699000FF54A9 /* NSDictionary+JSON.m */; };
+		3910E9E915A47B1C00FF54A9 /* Ranking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3910E9E815A47B1C00FF54A9 /* Ranking.m */; };
+		3910E9EC15A4B46B00FF54A9 /* LabelFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 3910E9EB15A4B46B00FF54A9 /* LabelFormater.m */; };
 		3956531B159098FA00513FE3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531A159098FA00513FE3 /* UIKit.framework */; };
 		3956531D159098FA00513FE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531C159098FA00513FE3 /* Foundation.framework */; };
 		3956531F159098FA00513FE3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531E159098FA00513FE3 /* CoreGraphics.framework */; };
@@ -54,6 +56,10 @@
 		3910E9DC15A3636600FF54A9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3910E9E415A4699000FF54A9 /* NSDictionary+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSON.h"; sourceTree = "<group>"; };
 		3910E9E515A4699000FF54A9 /* NSDictionary+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSON.m"; sourceTree = "<group>"; };
+		3910E9E715A47B1C00FF54A9 /* Ranking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ranking.h; sourceTree = "<group>"; };
+		3910E9E815A47B1C00FF54A9 /* Ranking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ranking.m; sourceTree = "<group>"; };
+		3910E9EA15A4B46B00FF54A9 /* LabelFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelFormater.h; sourceTree = "<group>"; };
+		3910E9EB15A4B46B00FF54A9 /* LabelFormater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelFormater.m; sourceTree = "<group>"; };
 		39565316159098FA00513FE3 /* Quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3956531A159098FA00513FE3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3956531C159098FA00513FE3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -244,6 +250,8 @@
 				395653761590E30200513FE3 /* Questao.m */,
 				39BC9203159E206C00DD669E /* Categoria.h */,
 				39BC9204159E206C00DD669E /* Categoria.m */,
+				3910E9E715A47B1C00FF54A9 /* Ranking.h */,
+				3910E9E815A47B1C00FF54A9 /* Ranking.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -264,6 +272,8 @@
 				39BC91FC159DC5FF00DD669E /* SoapConnection.m */,
 				3910E9E415A4699000FF54A9 /* NSDictionary+JSON.h */,
 				3910E9E515A4699000FF54A9 /* NSDictionary+JSON.m */,
+				3910E9EA15A4B46B00FF54A9 /* LabelFormater.h */,
+				3910E9EB15A4B46B00FF54A9 /* LabelFormater.m */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -371,6 +381,8 @@
 				39BC91FD159DC5FF00DD669E /* SoapConnection.m in Sources */,
 				39BC9205159E206C00DD669E /* Categoria.m in Sources */,
 				3910E9E615A4699000FF54A9 /* NSDictionary+JSON.m in Sources */,
+				3910E9E915A47B1C00FF54A9 /* Ranking.m in Sources */,
+				3910E9EC15A4B46B00FF54A9 /* LabelFormater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

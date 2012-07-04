@@ -83,9 +83,27 @@
     
 }
 
-- (void) usuarioSeLogou: (Usuario *) _usuario{
+- (void) usuarioSeLogou: (NSString *) xml{
+    NSLog(@"Usuario se logou: ]n%@", xml);
+    
+    //<return>1661</return>
+    NSRange range1 = [xml rangeOfString:@"<return>"];
+    NSRange range2 = [xml rangeOfString:@"</return>"];
+    
+    NSString *pontuacaoAtual = [xml substringWithRange:NSMakeRange(range1.location+range1.length , range2.location-range1.location)];
+    
+    NSLog(@"Pontuação atual: %@", pontuacaoAtual);
+    
+    usuario.pontos = [pontuacaoAtual doubleValue]; 
+    
+    
+    NSLog(@"Pontuação atual: %f", usuario.pontos);
+    
+    
+    [usuario saveAsCurrent];
     
     RankingViewController *ranking = [[RankingViewController alloc] init];
+    
     [self presentModalViewController:ranking animated:YES];
 }
 
