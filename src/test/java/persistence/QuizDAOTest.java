@@ -43,7 +43,6 @@ public class QuizDAOTest {
 	
 	@Test
 	public void listCategories() {
-		System.out.println(dao.listCategories());
 		assertTrue(dao.listCategories().size() > 0);
 	}
 
