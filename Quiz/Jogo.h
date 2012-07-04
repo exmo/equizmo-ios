@@ -14,7 +14,7 @@
 @property NSString *categoria;
 @property NSArray *questoes;
 
-- (void) prepararQuestoes;
+- (void) prepararQuestoes: (SEL) method target: (id) target;
 - (double) pontuacao;
 
 @end

@@ -16,4 +16,6 @@
 @property NSArray *proposicoes;
 @property int tempoDeResposta;
 
+- (BOOL) estaCerto;
+
 @end

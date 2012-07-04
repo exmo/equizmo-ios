@@ -11,9 +11,13 @@
 
 @interface Usuario : NSObject
 
-@property NSString *nome;
-@property NSString *email;
-@property CLLocation *localizacao;
+@property(retain, nonatomic) NSString *nome;
+@property(retain, nonatomic) NSString *email;
+@property(retain, nonatomic) CLLocation *localizacao;
 @property double pontos;
+
+-(void) saveAsCurrent;
+
+- (void) logarWithCallback: (SEL) _method forInstance: (id) _instance;
 
 @end

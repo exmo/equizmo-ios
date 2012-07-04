@@ -17,10 +17,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self customizeAppearance];
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    [self customizeAppearance];
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.viewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController_iPhone" bundle:nil];
         
@@ -62,6 +63,7 @@
 #pragma mark Customizações
 - (void)customizeAppearance
 {
+    self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
     
 //    UIImage *background = [UIImage imageNamed:@"background"]; 
 //    [[UIView appearance] setBackgroundImage:background];

@@ -8,6 +8,8 @@
 
 #import "SelecionarCategoriaViewController.h"
 #import "JogoViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import "Categoria.h"
 
 @interface SelecionarCategoriaViewController ()
 
@@ -15,8 +17,11 @@
 
 @implementation SelecionarCategoriaViewController
 
+@synthesize viewCategoria;
 @synthesize lista;
+@synthesize indicadorAtividade;
 @synthesize mainModel;
+@synthesize tabelaCategorias;
 
 #pragma mark UITableViewDelegate
 
@@ -68,13 +73,32 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
     
-    lista = [NSArray arrayWithObjects:@"Física Quântica", @"Esportes de inverno", @"Psicologia Mesosóica", @"Rebimbocagem", nil];
+    viewCategoria.layer.cornerRadius = 10;
+    viewCategoria.layer.masksToBounds = YES;
+    viewCategoria.layer.borderWidth = 3.0f;
+    viewCategoria.layer.borderColor = [UIColor orangeColor].CGColor; 
     
+    
+    
+    lista = [NSArray arrayWithObjects: nil];
+    [[[Categoria alloc]init]carregarCategoriasWithCallback:@selector(atualizarTabela:) forInstance:self];
+    [indicadorAtividade startAnimating];
 }
+
+- (void) atualizarTabela: (NSArray *) categorias{
+    lista = categorias;
+    [tabelaCategorias reloadData];
+    [indicadorAtividade stopAnimating];
+}
+
 
 - (void)viewDidUnload
 {
+    [self setViewCategoria:nil];
+    [self setTabelaCategorias:nil];
+    [self setIndicadorAtividade:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -85,4 +109,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)cancelar:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
 @end

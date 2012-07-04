@@ -9,9 +9,6 @@
 #import "LoginViewController.h"
 #import "RankingViewController.h"
 
-#define VAR_NOME @"nome"
-#define VAR_EMAIL @"email"
-
 @interface LoginViewController (){
     CLLocationManager *locationManager;
 }
@@ -28,6 +25,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
+
+    
 	// Do any additional setup after loading the view, typically from a nib.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -74,15 +75,18 @@
     usuario.nome = textFieldNome.text;
     usuario.email = textFieldEmail.text;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:usuario.email forKey:VAR_EMAIL];
-    [defaults setObject:usuario.nome forKey:VAR_NOME];
-    [defaults synchronize];
+    [usuario saveAsCurrent];
     
     NSLog(@"Entrando com o usuário: %@ (%@)", usuario.nome, usuario.email);
+    
+    [usuario logarWithCallback: @selector(usuarioSeLogou:) forInstance:self];
+    
+}
+
+- (void) usuarioSeLogou: (Usuario *) _usuario{
+    
     RankingViewController *ranking = [[RankingViewController alloc] init];
     [self presentModalViewController:ranking animated:YES];
-    
 }
 
 
@@ -95,7 +99,6 @@
     
     NSLog(@"LATITUDE: %f", usuario.localizacao.coordinate.latitude);
     NSLog(@"LONGITUDE: %f", usuario.localizacao.coordinate.longitude);
-    NSLog(@"ALTITUDE: %f", usuario.localizacao.altitude);
     
     // Quando pegar desliga!!!    
     [locationManager stopUpdatingLocation];

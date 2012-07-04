@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface SelecionarCategoriaViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *viewCategoria;
 
 @property NSArray *lista;
+@property (unsafe_unretained, nonatomic) IBOutlet UIActivityIndicatorView *indicadorAtividade;
 
 @property UIViewController *mainModel;
+@property (unsafe_unretained, nonatomic) IBOutlet UITableView *tabelaCategorias;
+
+- (IBAction)cancelar:(id)sender;
 
 @end

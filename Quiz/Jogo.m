@@ -7,33 +7,82 @@
 //
 
 #import "Jogo.h"
+#import "SoapConnection.h"
+#import "TBXML.h"
+
+#define SOAP_ADDRESS @"https://quiz-exmo.rhcloud.com/quiz"
+#define WSDL_TARGET_NAMESPACE @"http://webservice/"
+#define OPERATION_LOGIN @"giveMeAQuizResponse"
+#define SOAP_ACTION @""
+
+@interface Jogo()
+@property (strong) id target;
+@property SEL method;
+
+@end
 
 @implementation Jogo
 
 @synthesize questoes, categoria;
+@synthesize method, target;
 
-- (void) prepararQuestoes{
-    
+- (void) prepararQuestoes: (SEL) _method target: (id) _target{
     NSLog(@"Preparando as questões para a categoria: %@", categoria);
     
-    Questao *q1 = [[Questao alloc]init];
-    q1.pergunta = @"Quem matou maria préa?";
-    q1.proposicoes = [NSArray arrayWithObjects:@"Serge", @"Marlon", @"Robson", @"Sister Dulce", nil];
-    q1.respostaCerta = 3;
+    self.target = _target;
+    self.method = _method;
     
-    Questao *q2 = [[Questao alloc]init];
-    q2.pergunta = @"Qual o time que mais estreou a libertadores no brasil?";
-    q2.proposicoes = [NSArray arrayWithObjects:@"Internacional", @"Bahia", @"Santos", @"Flamengo", nil];
-    q2.respostaCerta = 1;
+    NSDictionary *parameters = [NSDictionary dictionaryWithObject:categoria forKey:@"category"];
     
-    Questao *q3 = [[Questao alloc]init];
-    q3.pergunta = @"Quem será campeão em 2012?";
-    q3.proposicoes = [NSArray arrayWithObjects:@"Internacional", @"Bahia", @"Santos", @"Flamengo", nil];
-    q3.respostaCerta = 1;
+    SoapConnection *soap = [[SoapConnection alloc]initWithSoapAddress:SOAP_ADDRESS targetNamespace:WSDL_TARGET_NAMESPACE operationName:OPERATION_LOGIN parameters:parameters headers:nil];
     
-    questoes = [NSArray arrayWithObjects:q1,q2,q3, nil];
+    [soap loadServiceWithCallbak:@selector(extrairJogoDoXml:) forInstance:self];
     
 }
+
+
+- (void) extrairJogoDoXml: (NSString *) xml{
+    NSMutableArray *lista = [[NSMutableArray alloc] init]; 
+    
+    TBXML * tbxml = [[TBXML alloc] initWithXMLString:xml error:nil];
+    TBXMLElement * root = tbxml.rootXMLElement;    
+    TBXMLElement *pula = [TBXML childElementNamed:@"soap:Body" parentElement:root];
+    pula = [TBXML childElementNamed:@"ns2:giveMeAQuizResponse" parentElement:pula];
+    TBXMLElement *quiz = [TBXML childElementNamed:@"quiz" parentElement:pula];
+    
+    // Percorre as questões
+    TBXMLElement * element = [TBXML childElementNamed:@"questions" parentElement:quiz];
+    while (element){  
+        Questao *questao = [[Questao alloc]init];
+        
+        TBXMLElement *resposta = [TBXML childElementNamed:@"answer" parentElement:quiz];
+        questao.respostaCerta = [[TBXML textForElement:resposta] intValue]; 
+        
+        TBXMLElement *enunciado = [TBXML childElementNamed:@"enunciation" parentElement:quiz];
+        questao.pergunta = [TBXML textForElement:enunciado];
+        
+        NSMutableArray *alternativas = [[NSMutableArray alloc]init];
+        TBXMLElement * alternativa = [TBXML childElementNamed:@"propositions" parentElement:quiz];
+        while (alternativa){
+            [alternativas addObject:[TBXML textForElement:alternativa]];
+            alternativa = alternativa->nextSibling;
+        }
+        questao.proposicoes = alternativas;
+        
+        [lista addObject:questao];
+        // Próxima questão!
+        element = element->nextSibling;
+    }
+    
+    // Montou a lista de questões;
+    questoes = lista;
+    
+    if([target respondsToSelector:method]){
+        [target performSelector:method];
+    }
+    
+}
+
 
 - (double) pontuacao{
     

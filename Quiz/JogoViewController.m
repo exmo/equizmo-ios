@@ -9,10 +9,11 @@
 #import "JogoViewController.h"
 #import "Questao.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ResultadoUIView.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface JogoViewController (){
     int indiceQuestaoAtual;
+    NSArray *letras;
 }
 
 @end
@@ -26,7 +27,12 @@
 @synthesize labelTempoDaResposta;
 @synthesize labelPergunta;
 @synthesize tabelaRespostas;
+@synthesize viewPerguntaRespostas;
+@synthesize viewPontuacao;
+@synthesize resultadoView;
 
+@synthesize labelPontuacaoFinal;
+@synthesize tabelaResultadoFinal;
 @synthesize mainModal;
 
 @synthesize jogo, categoria;
@@ -47,7 +53,30 @@
 {
     [super viewDidLoad];
     
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
+    
+    viewPontuacao.layer.cornerRadius = 10;
+    viewPontuacao.layer.masksToBounds = YES;
+    viewPontuacao.layer.borderWidth = 3.0f;
+    viewPontuacao.layer.borderColor = [UIColor orangeColor].CGColor; 
+    
+    viewPerguntaRespostas.layer.cornerRadius = 10;
+    viewPerguntaRespostas.layer.masksToBounds = YES;
+    viewPerguntaRespostas.layer.borderWidth = 3.0f;
+    viewPerguntaRespostas.layer.borderColor = [UIColor whiteColor].CGColor;
+    
     indiceQuestaoAtual = -1;
+    
+    letras = [NSArray arrayWithObjects:@"a",@"b",@"c",@"d",@"e",@"f",@"g", nil];
+    
+    
+    //Preparar os tocadores para não ter delay
+    NSURL *url1 = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/success.mp3",[[NSBundle mainBundle] resourcePath]]];
+    NSURL *url2 = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/fail.mp3",[[NSBundle mainBundle] resourcePath]]];
+    playerCerto = [[AVAudioPlayer alloc] initWithContentsOfURL:url1 error:nil];
+    playerErrado = [[AVAudioPlayer alloc] initWithContentsOfURL:url2 error:nil];
+    [playerCerto prepareToPlay];
+    [playerErrado prepareToPlay];    
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     labelNome.text = [defaults objectForKey:@"nome"];
@@ -55,7 +84,7 @@
     jogo = [[Jogo alloc] init];
     jogo.categoria = categoria;
     
-    [jogo prepararQuestoes];
+    [jogo prepararQuestoes: @selector(exibirProximaQuestao) target:self];
     
     labelCategoria.text = categoria;
     labelTotalDePerguntas.text = [NSString stringWithFormat:@"%d", [jogo.questoes count]];
@@ -64,7 +93,7 @@
 
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self exibirProximaQuestao];
+//    [self exibirProximaQuestao];
 }
 
 - (void)viewDidUnload
@@ -77,6 +106,12 @@
     [self setLabelTempoDaResposta:nil];
     [self setLabelPergunta:nil];
     [self setTabelaRespostas:nil];
+    [self setViewPerguntaRespostas:nil];
+    [self setViewPontuacao:nil];
+    [self setResultadoView:nil];
+    [self setLabelPontuacaoFinal:nil];
+    [self setTabelaRespostas:nil];
+    [self setTabelaResultadoFinal:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -90,14 +125,36 @@
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(tableView == tabelaResultadoFinal){
+        // Ultimo resultado
+        if(indexPath.row == ([jogo.questoes count]-1)){
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            NSString *totalPontos = [formatter stringFromNumber:[NSNumber numberWithDouble:[jogo pontuacao]]];
+            labelPontuacaoFinal.text =[NSString stringWithFormat:@"%@ pontos!",  totalPontos];
+            
+            [labelPontuacaoFinal setHidden:NO];
+        }else{
+            NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 0.8 ];
+            [NSThread sleepUntilDate:future];
+        }
+    }
+    
 }
 
 #pragma mark UITableViewDataSource
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
     if(indiceQuestaoAtual<0)
         return 0;
+    
+    if(tableView == tabelaResultadoFinal){
+        return [jogo.questoes count];
+    }
+
     
     Questao *q = [jogo.questoes objectAtIndex:indiceQuestaoAtual];
     return [q.proposicoes count];
@@ -105,14 +162,44 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(tableView == tabelaResultadoFinal){
+        static NSString * cellIdResultado = @"CelulaResultado";
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdResultado];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdResultado];
+        }
+        Questao *q = [jogo.questoes objectAtIndex:indexPath.row];
+        cell.textLabel.text = q.pergunta;
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:15.0];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        [cell.textLabel sizeToFit];
+        
+        cell.detailTextLabel.text = [q.proposicoes objectAtIndex:q.respostaJogador];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
+        [cell.detailTextLabel sizeToFit];
+        
+        if([q estaCerto]){
+            cell.imageView.image = [UIImage imageNamed:@"penguim"];
+        }else {
+            cell.imageView.image = [UIImage imageNamed:@"sid"];
+        }
+        
+        NSLog(@"Montando a tabel de resultados... %@", q.pergunta);
+        
+        return cell;
+    }
+    
+    
     static NSString * cellId = @"CelularProposicao";
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     Questao *q = [jogo.questoes objectAtIndex:indiceQuestaoAtual];
+    NSString  *letra = [letras objectAtIndex:indexPath.row];
     NSString  *proposicao = [q.proposicoes objectAtIndex:indexPath.row];    
-    cell.textLabel.text = [NSString stringWithFormat:@" %@", proposicao];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@) %@",letra, proposicao];
     
     return cell;
 }
@@ -122,10 +209,20 @@
         Questao *q = [jogo.questoes objectAtIndex:indiceQuestaoAtual];
         q.respostaJogador = indexPath.row;
         
+        if(q.estaCerto){
+            [playerCerto play]; 
+        }else{
+            [playerErrado play];
+        }
+        
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
         NSString *totalPontos = [formatter stringFromNumber:[NSNumber numberWithDouble:[jogo pontuacao]]];
         labelPontos.text = totalPontos;
+        
+//        while([playerCerto isPlaying] || [playerErrado isPlaying]){
+//            // Espera o infeliz terminar o som!
+//        }
         
         [self exibirProximaQuestao];
     }
@@ -133,6 +230,7 @@
 }
 
 #pragma mark Metodos
+
 -(void) exibirProximaQuestao{
     indiceQuestaoAtual++;
     if(indiceQuestaoAtual < [jogo.questoes count]){
@@ -141,63 +239,30 @@
         labelNumeroDaPergunta.text = [NSString stringWithFormat:@"%d", indiceQuestaoAtual+1];
         [tabelaRespostas reloadData];
     }else {
+        // Envia para o servidor e exibe o resultado;
         [self encerrarJogo];
     }
 }
 
 - (void) encerrarJogo{
     
-    UIView *bgView = [[UIView alloc] initWithFrame: self.view.bounds];
-    bgView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7];
-
+//    [self.view addSubview:resultadoView];
     
-    [self.view addSubview: bgView];
+    resultadoView.center = CGPointMake( self.view.frame.size.width/2, self.view.frame.size.height/2);
+    resultadoView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9];
+    resultadoView.layer.cornerRadius = 10;
+    resultadoView.layer.masksToBounds = YES;
+    resultadoView.layer.borderWidth = 3.0f;
+    resultadoView.layer.borderColor = [UIColor orangeColor].CGColor; 
     
-    //faux view
-    UIView* fauxView = [[UIView alloc] initWithFrame: CGRectMake(10, 10, 200, 200)];
-    fauxView.backgroundColor = [UIColor redColor];
-    [bgView addSubview: fauxView];
     
-    //the new panel
-//    ResultadoUIView *bigPanelView = [[ResultadoUIView alloc] initWithFrame:CGRectMake(0, 0, bgView.frame.size.width * 0.8, bgView.frame.size.height * 0.8)];
-
-    ResultadoUIView *bigPanelView = [[[NSBundle mainBundle] loadNibNamed:@"ResultadoUIView" owner:self options:nil] objectAtIndex:0];
-    
-    bigPanelView.frame = CGRectMake(0, 0, bgView.frame.size.width * 0.8, bgView.frame.size.height * 0.8);
-    bigPanelView.center = CGPointMake( bgView.frame.size.width/2, bgView.frame.size.height/2);
-    
-//    //[ … Here add the window contents inside bigPanelView …]
-//    bigPanelView.layer.cornerRadius = 10;
-//    bigPanelView.layer.masksToBounds = YES;
-//    bigPanelView.layer.borderWidth = 3.0f;
-//    bigPanelView.layer.borderColor = [UIColor blueColor].CGColor; 
-//    bigPanelView.backgroundColor = [UIColor whiteColor];
-//    
-//    //Botao fechar
-//    int fecharOffset = 10;
-//    UIImage* fecharImg = [UIImage imageNamed:@"popupCloseBtn"];
-//    UIButton* fechar = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [fechar setImage:fecharImg forState:UIControlStateNormal];
-//    [fechar setFrame:CGRectMake( bigPanelView.frame.origin.x + bigPanelView.frame.size.width - fecharImg.size.width - fecharOffset -30, 
-//                                  bigPanelView.frame.origin.y +100 ,
-//                                  fecharImg.size.width + fecharOffset, 
-//                                  fecharImg.size.height + fecharOffset)];
-//    [fechar addTarget:self action:@selector(fecharJanelas) forControlEvents:UIControlEventTouchUpInside];
-//    [bigPanelView addSubview: fechar];
-//    
-//   
-//    [bgView addSubview:bigPanelView];
-
-    
-    //animation options
-    UIViewAnimationOptions options = UIViewAnimationOptionTransitionCurlUp | UIViewAnimationOptionBeginFromCurrentState;
-    
-    //run the animation
-    [UIView transitionFromView:fauxView toView:bigPanelView duration:0.5 options:options completion: ^(BOOL finished) {
-        //[ … some completion event handler … ]
-        NSLog(@"Exibindo o painel...");
-    }];
-    
+    [UIView transitionWithView:self.view duration:0.8
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^ { 
+                        [self.view addSubview:resultadoView]; 
+                        [tabelaResultadoFinal reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+                    }
+                    completion:nil];
     
 }
 
@@ -213,4 +278,7 @@
 }
 
 
+- (IBAction)fechar:(id)sender {
+    [self fecharJanelas];
+}
 @end

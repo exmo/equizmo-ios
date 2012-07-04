@@ -9,12 +9,15 @@
 #import "RankingViewController.h"
 #import "Usuario.h"
 #import "SelecionarCategoriaViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface RankingViewController ()
 
 @end
 
 @implementation RankingViewController
+@synthesize viewPontuacao;
+@synthesize viewRanking;
 @synthesize labelPontos;
 @synthesize labelNome;
 @synthesize tabela, lista;
@@ -64,6 +67,17 @@
 {
     [super viewDidLoad];
     
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
+    
+    viewPontuacao.layer.cornerRadius = 10;
+    viewPontuacao.layer.masksToBounds = YES;
+    viewPontuacao.layer.borderWidth = 3.0f;
+    viewPontuacao.layer.borderColor = [UIColor orangeColor].CGColor; 
+    
+    viewRanking.layer.cornerRadius = 10;
+    viewRanking.layer.masksToBounds = YES;
+    viewRanking.layer.borderWidth = 3.0f;
+    viewRanking.layer.borderColor = [UIColor whiteColor].CGColor; 
     
     // Do any additional setup after loading the view from its nib.
     
@@ -88,6 +102,8 @@
     [self setTabela:nil];
     [self setLabelNome:nil];
     [self setLabelPontos:nil];
+    [self setViewPontuacao:nil];
+    [self setViewRanking:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

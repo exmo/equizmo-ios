@@ -12,4 +12,10 @@
 
 @synthesize pergunta, proposicoes, respostaCerta, respostaJogador, tempoDeResposta;
 
+
+- (BOOL) estaCerto{
+    
+    return [[NSNumber numberWithInt:respostaCerta] isEqualToNumber:[NSNumber numberWithInt:respostaJogador ]];
+}
+
 @end

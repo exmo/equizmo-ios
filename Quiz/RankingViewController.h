@@ -14,6 +14,9 @@
 @property (retain, nonatomic) IBOutlet UITableView *tabela;
 @property NSArray *lista;
 
+@property (retain, nonatomic) IBOutlet UIView *viewPontuacao;
+@property (retain, nonatomic) IBOutlet UIView *viewRanking;
+
 - (IBAction)iniciarPartida:(id)sender;
 - (IBAction)exibirNoMapa:(id)sender;
 
