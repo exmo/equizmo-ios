@@ -15,50 +15,57 @@ import entity.User;
 public class UserRS {
 
 	@Inject 
-	UserBC bc;
+	private UserBC bc;
 	
 	@GET
 	@Path("/addPoints/{email}/{points}")
 	@Produces("application/json")
-	public ResponseAddPoints addPoints(@PathParam("email") String email, @PathParam("points") int points) {
-		ResponseAddPoints r = new ResponseAddPoints();
-		r.setPoints(bc.addPoints(email, points));
-		return r;
+	public AddPointsResponse addPoints(@PathParam("email") String email, @PathParam("points") int points) {
+		AddPointsResponse response = new AddPointsResponse();
+		response.setPoints(bc.addPoints(email, points));
+		return response;
 	}	
 	
 	@GET
 	@Path("/ranking/{offset}")
 	@Produces("application/json")
-	public ResponseRanking ranking(@PathParam("offset") Integer offset) {
-		ResponseRanking r = new ResponseRanking();
-		r.setLista(bc.ranking(offset));
-		return r;
+	public RankingResponse ranking(@PathParam("offset") int offset) {
+		RankingResponse response = new RankingResponse();
+		response.setUsers(bc.ranking(offset));
+		return response;
 	}	
 	
-	public class  ResponseRanking{
-		private List<User> lista;
+	@GET
+	@Path("/ranking")
+	@Produces("application/json")
+	public RankingResponse ranking() {
+		RankingResponse response = new RankingResponse();
+		response.setUsers(bc.ranking());
+		return response;
+	}	
+	
+	public class  RankingResponse{
+		private List<User> users;
 
-		public List<User> getLista() {
-			return lista;
+		public List<User> getUsers() {
+			return users;
 		}
 
-		public void setLista(List<User> lista) {
-			this.lista = lista;
+		public void setUsers(List<User> users) {
+			this.users = users;
 		}
 	}
 	
-	public class  ResponseAddPoints{
-		private Integer points;
+	public class  AddPointsResponse{
+		private int points;
 
-		public Integer getPoints() {
+		public int getPoints() {
 			return points;
 		}
 
-		public void setPoints(Integer points) {
+		public void setPoints(int points) {
 			this.points = points;
-		}
-
-		
+		}		
 	}
 	
 }
