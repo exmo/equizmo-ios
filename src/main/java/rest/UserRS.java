@@ -13,7 +13,7 @@ public class UserRS {
 	UserBC bc;
 	
 	@GET
-	@Path("/addPoints/{e-mail}/{points}")
+	@Path("/addPoints/{email}/{points}")
 	public int addPoints(@PathParam("email") String email, @PathParam("points") int points) {
 		return bc.addPoints(email, points);
 	}		
