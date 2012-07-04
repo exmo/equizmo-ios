@@ -42,4 +42,8 @@ public class UserBC {
         });
         return users; 
     }
+    
+    public void clear() {
+    	dao.clear();
+    }
 }

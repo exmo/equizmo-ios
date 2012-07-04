@@ -31,4 +31,7 @@ public class UserDAO {
         return 1;
     }
 
+    public void clear() {
+        userList.clear();
+    }
 }
