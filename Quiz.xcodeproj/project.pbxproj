@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3910E9DD15A3636600FF54A9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3910E9DC15A3636600FF54A9 /* libz.dylib */; };
+		3910E9E615A4699000FF54A9 /* NSDictionary+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3910E9E515A4699000FF54A9 /* NSDictionary+JSON.m */; };
 		3956531B159098FA00513FE3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531A159098FA00513FE3 /* UIKit.framework */; };
 		3956531D159098FA00513FE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531C159098FA00513FE3 /* Foundation.framework */; };
 		3956531F159098FA00513FE3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531E159098FA00513FE3 /* CoreGraphics.framework */; };
@@ -47,13 +48,12 @@
 		39BC91ED159CEC4F00DD669E /* sid.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91EC159CEC4F00DD669E /* sid.png */; };
 		39BC91FD159DC5FF00DD669E /* SoapConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BC91FC159DC5FF00DD669E /* SoapConnection.m */; };
 		39BC9205159E206C00DD669E /* Categoria.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BC9204159E206C00DD669E /* Categoria.m */; };
-		39BC921215A336E800DD669E /* TBXML+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BC920B15A336E700DD669E /* TBXML+Compression.m */; };
-		39BC921315A336E800DD669E /* TBXML+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BC920C15A336E700DD669E /* TBXML+HTTP.m */; };
-		39BC921415A336E800DD669E /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BC920D15A336E700DD669E /* TBXML.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3910E9DC15A3636600FF54A9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3910E9E415A4699000FF54A9 /* NSDictionary+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSON.h"; sourceTree = "<group>"; };
+		3910E9E515A4699000FF54A9 /* NSDictionary+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSON.m"; sourceTree = "<group>"; };
 		39565316159098FA00513FE3 /* Quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3956531A159098FA00513FE3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3956531C159098FA00513FE3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -107,12 +107,6 @@
 		39BC9202159E1C5100DD669E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		39BC9203159E206C00DD669E /* Categoria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categoria.h; sourceTree = "<group>"; };
 		39BC9204159E206C00DD669E /* Categoria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categoria.m; sourceTree = "<group>"; };
-		39BC920B15A336E700DD669E /* TBXML+Compression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+Compression.m"; sourceTree = "<group>"; };
-		39BC920C15A336E700DD669E /* TBXML+HTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+HTTP.m"; sourceTree = "<group>"; };
-		39BC920D15A336E700DD669E /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
-		39BC920F15A336E800DD669E /* TBXML+Compression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+Compression.h"; sourceTree = "<group>"; };
-		39BC921015A336E800DD669E /* TBXML+HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+HTTP.h"; sourceTree = "<group>"; };
-		39BC921115A336E800DD669E /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,9 +260,10 @@
 		39BC91C31593A5FD00DD669E /* util */ = {
 			isa = PBXGroup;
 			children = (
-				39BC921515A336F200DD669E /* TBXML */,
 				39BC91FB159DC5FF00DD669E /* SoapConnection.h */,
 				39BC91FC159DC5FF00DD669E /* SoapConnection.m */,
+				3910E9E415A4699000FF54A9 /* NSDictionary+JSON.h */,
+				3910E9E515A4699000FF54A9 /* NSDictionary+JSON.m */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -280,35 +275,6 @@
 				39BC91DF159CC50D00DD669E /* success.mp3 */,
 			);
 			name = sounds;
-			sourceTree = "<group>";
-		};
-		39BC920A15A336E700DD669E /* TBXML-Code */ = {
-			isa = PBXGroup;
-			children = (
-				39BC920B15A336E700DD669E /* TBXML+Compression.m */,
-				39BC920C15A336E700DD669E /* TBXML+HTTP.m */,
-				39BC920D15A336E700DD669E /* TBXML.m */,
-			);
-			path = "TBXML-Code";
-			sourceTree = "<group>";
-		};
-		39BC920E15A336E700DD669E /* TBXML-Headers */ = {
-			isa = PBXGroup;
-			children = (
-				39BC920F15A336E800DD669E /* TBXML+Compression.h */,
-				39BC921015A336E800DD669E /* TBXML+HTTP.h */,
-				39BC921115A336E800DD669E /* TBXML.h */,
-			);
-			path = "TBXML-Headers";
-			sourceTree = "<group>";
-		};
-		39BC921515A336F200DD669E /* TBXML */ = {
-			isa = PBXGroup;
-			children = (
-				39BC920A15A336E700DD669E /* TBXML-Code */,
-				39BC920E15A336E700DD669E /* TBXML-Headers */,
-			);
-			name = TBXML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,9 +370,7 @@
 				395653771590E30200513FE3 /* Questao.m in Sources */,
 				39BC91FD159DC5FF00DD669E /* SoapConnection.m in Sources */,
 				39BC9205159E206C00DD669E /* Categoria.m in Sources */,
-				39BC921215A336E800DD669E /* TBXML+Compression.m in Sources */,
-				39BC921315A336E800DD669E /* TBXML+HTTP.m in Sources */,
-				39BC921415A336E800DD669E /* TBXML.m in Sources */,
+				3910E9E615A4699000FF54A9 /* NSDictionary+JSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

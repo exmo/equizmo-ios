@@ -84,7 +84,7 @@
     jogo = [[Jogo alloc] init];
     jogo.categoria = categoria;
     
-    [jogo prepararQuestoes: @selector(exibirProximaQuestao) target:self];
+    [jogo prepararQuestoes];
     
     labelCategoria.text = categoria;
     labelTotalDePerguntas.text = [NSString stringWithFormat:@"%d", [jogo.questoes count]];
@@ -93,7 +93,7 @@
 
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    [self exibirProximaQuestao];
+    [self exibirProximaQuestao];
 }
 
 - (void)viewDidUnload
