@@ -8,14 +8,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import br.gov.frameworkdemoiselle.stereotype.Controller;
 import business.QuizBC;
 import entity.Quiz;
 
 @Path("/quiz")
-@Controller
 public class QuizRS {
-	@Inject QuizBC bc;
+	@Inject 
+	QuizBC bc;
 	
 	@GET
 	@Path("/get/{category}")
