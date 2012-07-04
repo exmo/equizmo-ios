@@ -21,6 +21,7 @@
 @end
 
 @implementation JogoViewController
+@synthesize atividade;
 @synthesize labelCategoria;
 @synthesize labelNome;
 @synthesize labelPontos;
@@ -35,7 +36,6 @@
 @synthesize totalPontos;
 
 @synthesize labelPontuacaoFinal;
-@synthesize tabelaResultadoFinal;
 @synthesize mainModal;
 
 @synthesize jogo, categoria;
@@ -69,6 +69,8 @@
     viewPerguntaRespostas.layer.borderColor = [UIColor whiteColor].CGColor;
     
     indiceQuestaoAtual = -1;
+    
+    [atividade startAnimating];
     
     letras = [NSArray arrayWithObjects:@"a",@"b",@"c",@"d",@"e",@"f",@"g", nil];
     
@@ -114,8 +116,8 @@
     [self setResultadoView:nil];
     [self setLabelPontuacaoFinal:nil];
     [self setTabelaRespostas:nil];
-    [self setTabelaResultadoFinal:nil];
     [self setTotalPontos:nil];
+    [self setAtividade:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -130,21 +132,6 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if(tableView == tabelaResultadoFinal){
-        // Ultimo resultado
-        if(indexPath.row == ([jogo.questoes count]-1)){
-            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-            [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-            NSString *pontuacao = [formatter stringFromNumber:[NSNumber numberWithDouble:[jogo pontuacao]]];
-            labelPontuacaoFinal.text =[NSString stringWithFormat:@"%@ pontos!",  pontuacao];
-            
-            [labelPontuacaoFinal setHidden:NO];
-        }else{
-            NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 0.8 ];
-            [NSThread sleepUntilDate:future];
-        }
-    }
-    
 }
 
 #pragma mark UITableViewDataSource
@@ -155,45 +142,12 @@
     if(indiceQuestaoAtual<0)
         return 0;
     
-    if(tableView == tabelaResultadoFinal){
-        return [jogo.questoes count];
-    }
-
-    
     Questao *q = [jogo.questoes objectAtIndex:indiceQuestaoAtual];
     return [q.proposicoes count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(tableView == tabelaResultadoFinal){
-        static NSString * cellIdResultado = @"CelulaResultado";
-        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdResultado];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdResultado];
-        }
-        Questao *q = [jogo.questoes objectAtIndex:indexPath.row];
-        cell.textLabel.text = q.pergunta;
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:15.0];
-        cell.textLabel.textColor = [UIColor whiteColor];
-        [cell.textLabel sizeToFit];
-//        [self resizeFontToFitLabel: cell.textLabel];
-        
-        cell.detailTextLabel.text = [q.proposicoes objectAtIndex:q.respostaJogador];
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
-        cell.detailTextLabel.textColor = [UIColor whiteColor];
-        [cell.detailTextLabel sizeToFit];
-//        [self resizeFontToFitLabel: cell.detailTextLabel];
-        
-        if([q estaCerto]){
-            cell.imageView.image = [UIImage imageNamed:@"penguim"];
-        }else {
-            cell.imageView.image = [UIImage imageNamed:@"sid"];
-        }
-        
-        return cell;
-    }
-    
     
     static NSString * cellId = @"CelularProposicao";
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
@@ -204,8 +158,8 @@
     NSString  *letra = [letras objectAtIndex:indexPath.row];
     NSString  *proposicao = [q.proposicoes objectAtIndex:indexPath.row];    
     cell.textLabel.text = [NSString stringWithFormat:@"%@) %@",letra, proposicao];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:15.0];
-    [LabelFormater resizeFontToFitLabel: cell.textLabel maxSize:15.0 minSize:10.0];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
+    [LabelFormater resizeFontToFitLabel: cell.textLabel maxSize:14.0 minSize:12.0];
     
     return cell;
 }
@@ -244,11 +198,23 @@
 -(void) exibirProximaQuestao{
     indiceQuestaoAtual++;
     if(indiceQuestaoAtual < [jogo.questoes count]){
-        Questao *q = [jogo.questoes objectAtIndex:indiceQuestaoAtual];
-        labelPergunta.text =  q.pergunta;
-        [LabelFormater resizeFontToFitLabel:labelPergunta maxSize:20.0 minSize:15.0];
-        labelNumeroDaPergunta.text = [NSString stringWithFormat:@"%d", indiceQuestaoAtual+1];
-        [tabelaRespostas reloadData];
+        [UIView transitionWithView:viewPerguntaRespostas duration:1.2
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^ { 
+                            
+                            Questao *q = [jogo.questoes objectAtIndex:indiceQuestaoAtual];
+                            labelPergunta.text =  q.pergunta;
+                            [LabelFormater resizeFontToFitLabel:labelPergunta maxSize:20.0 minSize:15.0];
+                            labelNumeroDaPergunta.text = [NSString stringWithFormat:@"%d", indiceQuestaoAtual+1];
+                            //[tabelaRespostas reloadData];
+                            
+                            [tabelaRespostas reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
+                            
+                            [atividade stopAnimating];
+                            
+                        }
+                        completion:nil];
+        
     }else {
         // Envia para o servidor e exibe o resultado;
         
@@ -282,7 +248,13 @@
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     animations:^ { 
                         [self.view addSubview:resultadoView]; 
-                        [tabelaResultadoFinal reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+                        
+                        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+                        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+                        NSString *pontuacao = [formatter stringFromNumber:[NSNumber numberWithDouble:[jogo pontuacao]]];
+                        labelPontuacaoFinal.text =[NSString stringWithFormat:@"%@",  pontuacao];
+                        
+                        [labelPontuacaoFinal setHidden:NO];
                     }
                     completion:nil];
     

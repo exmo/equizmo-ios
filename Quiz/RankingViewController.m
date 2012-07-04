@@ -43,6 +43,7 @@
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
     }
     
     Usuario  *usuario = (Usuario *)[lista objectAtIndex:indexPath.row];

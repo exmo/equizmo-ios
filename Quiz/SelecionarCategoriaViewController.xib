@@ -42,7 +42,7 @@
 					<object class="IBUIImageView" id="796905962">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{78, 5}, {164, 34}}</string>
+						<string key="NSFrame">{{59, 5}, {202, 42}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="619423335"/>
@@ -356,10 +356,15 @@
 						</object>
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="indicadorAtividade">UIActivityIndicatorView</string>
 						<string key="tabelaCategorias">UITableView</string>
 						<string key="viewCategoria">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="indicadorAtividade">
+							<string key="name">indicadorAtividade</string>
+							<string key="candidateClassName">UIActivityIndicatorView</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="tabelaCategorias">
 							<string key="name">tabelaCategorias</string>
 							<string key="candidateClassName">UITableView</string>

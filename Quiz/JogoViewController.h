@@ -14,6 +14,7 @@
     AVAudioPlayer *playerCerto;
     AVAudioPlayer *playerErrado;
 }
+@property (unsafe_unretained, nonatomic) IBOutlet UIActivityIndicatorView *atividade;
 @property (retain, nonatomic) IBOutlet UILabel *labelCategoria;
 @property (retain, nonatomic) IBOutlet UILabel *labelNome;
 @property (retain, nonatomic) IBOutlet UILabel *labelPontos;
@@ -31,7 +32,6 @@
 
 @property Jogo *jogo;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *labelPontuacaoFinal;
-@property (unsafe_unretained, nonatomic) IBOutlet UITableView *tabelaResultadoFinal;
 
 @property UIViewController *mainModal;
 - (IBAction)fechar:(id)sender;
