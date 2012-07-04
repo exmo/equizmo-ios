@@ -27,5 +27,11 @@ public class UserDAOTest {
 		assertEquals(0, dao.login("teste2@teste2.com", "teste2", 20.0f, -20.0f));
 		assertTrue(dao.list().size() > 0);
 	}
+	
+	@Test
+	public void testLoad() {
+		dao.loadUsers();
+		assertTrue(dao.list().size() > 0);
+	}
 
 }
