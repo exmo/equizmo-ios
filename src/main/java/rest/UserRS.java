@@ -20,20 +20,22 @@ public class UserRS {
 	@GET
 	@Path("/addPoints/{email}/{points}")
 	@Produces("application/json")
-	public int addPoints(@PathParam("email") String email, @PathParam("points") int points) {
-		return bc.addPoints(email, points);
+	public ResponseAddPoints addPoints(@PathParam("email") String email, @PathParam("points") int points) {
+		ResponseAddPoints r = new ResponseAddPoints();
+		r.setPoints(bc.addPoints(email, points));
+		return r;
 	}	
 	
 	@GET
 	@Path("/ranking/{offset}")
 	@Produces("application/json")
-	public Ranking ranking(@PathParam("offset") Integer offset) {
-		Ranking r = new Ranking();
+	public ResponseRanking ranking(@PathParam("offset") Integer offset) {
+		ResponseRanking r = new ResponseRanking();
 		r.setLista(bc.ranking(offset));
 		return r;
 	}	
 	
-	public class  Ranking{
+	public class  ResponseRanking{
 		private List<User> lista;
 
 		public List<User> getLista() {
@@ -43,6 +45,19 @@ public class UserRS {
 		public void setLista(List<User> lista) {
 			this.lista = lista;
 		}
+	}
+	
+	public class  ResponseAddPoints{
+		private Integer points;
+
+		public Integer getPoints() {
+			return points;
+		}
+
+		public void setPoints(Integer points) {
+			this.points = points;
+		}
+
 		
 	}
 	
