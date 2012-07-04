@@ -1,17 +1,13 @@
 package persistence;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
-import br.gov.frameworkdemoiselle.annotation.Startup;
 
 import util.FileUtil;
 import util.XMLParserUtil;
-
+import br.gov.frameworkdemoiselle.annotation.Startup;
 import entity.Question;
 import entity.Quiz;
 
