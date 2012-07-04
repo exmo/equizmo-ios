@@ -34,11 +34,15 @@ public class UserBCTest {
         bc.addPoints("olivia@email.com", 40);
         bc.addPoints("cage@email.com", 30);
         bc.addPoints("nicole@email.com", 10);
-        List<User> ranking = bc.ranking(4);
-        assertEquals(4,ranking.size());
-        assertEquals("Olivia Newton John",ranking.get(0).getName());
-        assertEquals("Nicolas Cage",ranking.get(1).getName());
-        assertEquals("John Travolta",ranking.get(2).getName());
-        assertEquals("Nicole Kidman",ranking.get(3).getName());
+        List<User> fullRanking = bc.ranking();
+        assertEquals(4,fullRanking.size());
+        assertEquals("Olivia Newton John",fullRanking.get(0).getName());
+        assertEquals("Nicolas Cage",fullRanking.get(1).getName());
+        assertEquals("John Travolta",fullRanking.get(2).getName());
+        assertEquals("Nicole Kidman",fullRanking.get(3).getName());
+        List<User> top2ranking = bc.ranking(2);
+        assertEquals(2,top2ranking.size());
+        assertEquals("Olivia Newton John",top2ranking.get(0).getName());
+        assertEquals("Nicolas Cage",top2ranking.get(1).getName());        
     }
 }
