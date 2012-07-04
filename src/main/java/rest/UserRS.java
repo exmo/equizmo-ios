@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 
 import business.UserBC;
 import entity.User;
@@ -24,6 +25,7 @@ public class UserRS {
 	
 	@GET
 	@Path("/ranking/{offset}")
+	@Produces("application/json")
 	public List<User> ranking(@PathParam("offset") Integer offset) {
 		return bc.ranking(offset);
 	}	
