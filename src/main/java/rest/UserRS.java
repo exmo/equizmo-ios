@@ -9,12 +9,12 @@ import business.UserBC;
 
 @Path("/user")
 public class UserRS {
-	@Inject 
-	UserBC bc;
-	
-	@GET
-	@Path("/addPoints/{e-mail}/{points}")
-	public int addPoints(@PathParam("email") String email, @PathParam("points") int points) {
-		return bc.addPoints(email, points);
-	}		
+    @Inject 
+    UserBC bc;
+    
+    @GET
+    @Path("/addPoints/{email}/{points}")
+    public int addPoints(@PathParam("email") String email, @PathParam("points") int points) {
+        return bc.addPoints(email, points);
+    }        
 }
