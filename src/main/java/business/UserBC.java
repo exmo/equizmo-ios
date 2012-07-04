@@ -32,7 +32,11 @@ public class UserBC {
         return dao.ranking(email);
     }
 
-    public List<User> ranking(int i) {
+    public List<User> ranking() {
+    	return ranking(dao.list().size());
+    }
+    
+    public List<User> ranking(int n) {
         ArrayList<User> users = dao.list();
 
         Collections.sort(users, new Comparator<User>() {
@@ -40,7 +44,11 @@ public class UserBC {
             	return (u1.getPoints()>u2.getPoints() ? -1 : (u1.getPoints()==u2.getPoints() ? 0 : 1));
             }
         });
-        return users; 
+        
+        if (n >= users.size())
+        	return users;
+        else 
+        	return users.subList(0, n);
     }
     
     public void clear() {
