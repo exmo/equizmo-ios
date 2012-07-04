@@ -90,7 +90,9 @@
     NSRange range1 = [xml rangeOfString:@"<return>"];
     NSRange range2 = [xml rangeOfString:@"</return>"];
     
-    NSString *pontuacaoAtual = [xml substringWithRange:NSMakeRange(range1.location+range1.length , range2.location-range1.location)];
+    int p1 = range1.location+range1.length;
+    int p2 = range2.location - p1;
+    NSString *pontuacaoAtual = [xml substringWithRange:NSMakeRange(p1,p2)];
     
     NSLog(@"Pontuação atual: %@", pontuacaoAtual);
     

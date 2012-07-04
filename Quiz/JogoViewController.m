@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "LabelFormater.h"
+#import "Usuario.h"
 
 @interface JogoViewController (){
     int indiceQuestaoAtual;
@@ -260,6 +261,10 @@
     int total = [jogo informarPontuacao];
     
     
+    Usuario *u = [[Usuario alloc]init ];
+    [u loadCurrent];
+    u.pontos = total;
+    [u saveAsCurrent];
     
     totalPontos.text = [NSString stringWithFormat:@"%i", total];
     
@@ -292,6 +297,8 @@
     } else {
         [[mainModal presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     }    
+    
+    [mainModal viewWillAppear:true];
 }
 
 

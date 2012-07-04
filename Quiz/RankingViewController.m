@@ -105,17 +105,17 @@
     
 }
 
--(void) viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     
-    if(!lista){
-        lista = [Ranking listarPrimeiros:5];
-        Usuario *u = [[Usuario alloc]init];
-        [u loadCurrent];
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        labelPontos.text = [formatter stringFromNumber:[NSNumber numberWithDouble:u.pontos]];
-    }
+    lista = [Ranking listarPrimeiros:5];
+    [tabela reloadData];
+    
+    Usuario *u = [[Usuario alloc]init];
+    [u loadCurrent];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    labelPontos.text = [formatter stringFromNumber:[NSNumber numberWithDouble:u.pontos]];
 }
 
 - (void)viewDidUnload
