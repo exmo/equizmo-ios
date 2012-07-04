@@ -51,13 +51,11 @@ public class XMLParserUtilTest {
 	@Test 
 	public void readRemote() {
 		String xml = FileUtil.readRemote("https://raw.github.com/exmo/exmo.github.com/master/equizmo/quiz.xml");
-		System.out.println(xml);
 	}
 
 	@Test
 	public void testWriteXML() {
 		String result  = XMLParserUtil.write(quizList, aliases);
-		System.out.println(result);
 		assertEquals(xml, result);
 	}
 
