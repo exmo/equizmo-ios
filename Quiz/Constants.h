@@ -13,4 +13,7 @@
 #define VAR_EMAIL @"email"
 #define VAR_PONTOS @"pontos"
 
+#define EVENTO_LOGIN_OK @"loginEfetuado"
+#define EVENTO_LOGIN_FAIL @"loginFalhou"
+
 #endif

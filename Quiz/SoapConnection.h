@@ -19,6 +19,7 @@
 
 - (SoapConnection *) initWithSoapAddress: (NSString *)_soapAddress targetNamespace: (NSString *)_targetNamespace operationName: (NSString *)_operationName parameters: (NSDictionary *)_parameters headers: (NSDictionary *)_headers;
 
-- (void)loadServiceWithCallbak: (SEL) _method forInstance: (id) _instance;
+- (void)loadServiceWithCallbak: (SEL) _method forInstance: (id) _instance andFailureCallback: (SEL) _failMethod;
+
 
 @end

@@ -11,6 +11,8 @@
 		3910E9E615A4699000FF54A9 /* NSDictionary+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3910E9E515A4699000FF54A9 /* NSDictionary+JSON.m */; };
 		3910E9E915A47B1C00FF54A9 /* Ranking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3910E9E815A47B1C00FF54A9 /* Ranking.m */; };
 		3910E9EC15A4B46B00FF54A9 /* LabelFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 3910E9EB15A4B46B00FF54A9 /* LabelFormater.m */; };
+		391EC51715A5FC93000DE287 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 391EC51615A5FC93000DE287 /* logout.png */; };
+		391EC51A15A626D1000DE287 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 391EC51915A626D1000DE287 /* Localizable.strings */; };
 		3956531B159098FA00513FE3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531A159098FA00513FE3 /* UIKit.framework */; };
 		3956531D159098FA00513FE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531C159098FA00513FE3 /* Foundation.framework */; };
 		3956531F159098FA00513FE3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531E159098FA00513FE3 /* CoreGraphics.framework */; };
@@ -60,6 +62,8 @@
 		3910E9E815A47B1C00FF54A9 /* Ranking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ranking.m; sourceTree = "<group>"; };
 		3910E9EA15A4B46B00FF54A9 /* LabelFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelFormater.h; sourceTree = "<group>"; };
 		3910E9EB15A4B46B00FF54A9 /* LabelFormater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelFormater.m; sourceTree = "<group>"; };
+		391EC51615A5FC93000DE287 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
+		391EC51915A626D1000DE287 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		39565316159098FA00513FE3 /* Quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3956531A159098FA00513FE3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3956531C159098FA00513FE3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -181,6 +185,7 @@
 				39565323159098FA00513FE3 /* InfoPlist.strings */,
 				39565326159098FA00513FE3 /* main.m */,
 				39565328159098FA00513FE3 /* Quiz-Prefix.pch */,
+				391EC51915A626D1000DE287 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 		3956534015909E0F00513FE3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				391EC51615A5FC93000DE287 /* logout.png */,
 				39BC91D3159C991E00DD669E /* background.png */,
 				39BC91D4159C991E00DD669E /* background@2x.png */,
 				39BC91CD159C990D00DD669E /* login_desenvolvido_por.png */,
@@ -359,6 +365,8 @@
 				39BC91E9159CE6AD00DD669E /* carinha.png in Resources */,
 				39BC91EB159CEB4F00DD669E /* penguim.png in Resources */,
 				39BC91ED159CEC4F00DD669E /* sid.png in Resources */,
+				391EC51715A5FC93000DE287 /* logout.png in Resources */,
+				391EC51A15A626D1000DE287 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,11 +35,10 @@
     
     SoapConnection *soap = [[SoapConnection alloc]initWithSoapAddress:SOAP_ADDRESS targetNamespace:WSDL_TARGET_NAMESPACE operationName:OPERATION_LOGIN parameters:nil headers:nil];
     
-    [soap loadServiceWithCallbak:@selector(extrairCategoriasFromXML:) forInstance:self];
+    [soap loadServiceWithCallbak:@selector(extrairCategoriasFromXML:) forInstance:self andFailureCallback:nil];
 }
 
 -(void) extrairCategoriasFromXML: (NSString *)xml{
-    NSLog(@"XML a ser extraido: \n%@", xml);
     [_instancia performSelectorOnMainThread:_metodo withObject:[self parseXML: xml] waitUntilDone:YES];
 }
 

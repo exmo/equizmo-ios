@@ -11,7 +11,6 @@
 #import "Ranking.h"
 #import "SelecionarCategoriaViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "LabelFormater.h"
 
 @interface RankingViewController ()
 
@@ -54,9 +53,6 @@
     
     cell.textLabel.text = [NSString stringWithFormat:@" %d - %@ (%@ pontos)", (indexPath.row+1), usuario.nome, pontuacao];
     
-    
-    //[LabelFormater resizeFontToFitLabel:cell.textLabel];
-    
     return cell;
 }
 
@@ -88,35 +84,24 @@
     viewRanking.layer.masksToBounds = YES;
     viewRanking.layer.borderWidth = 3.0f;
     viewRanking.layer.borderColor = [UIColor whiteColor].CGColor; 
-
-    
-    lista = [Ranking listarPrimeiros:5];
-    
-    // Do any additional setup after loading the view, typically from a nib.
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    labelNome.text = [defaults objectForKey:@"nome"];
-    
-    
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    
-    labelPontos.text = [formatter stringFromNumber:[NSNumber numberWithDouble:[[defaults objectForKey:VAR_PONTOS] doubleValue]]];
-    
-
-    
 }
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self exibirDados];
+}
+
+- (void) exibirDados{
+    NSLog(@"Carregando dados para tela de ranking!");
     
-    lista = [Ranking listarPrimeiros:5];
-    [tabela reloadData];
-    
-    Usuario *u = [[Usuario alloc]init];
-    [u loadCurrent];
+    Usuario *u = [Usuario sharedInstance];
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    labelNome.text = u.nome;
     labelPontos.text = [formatter stringFromNumber:[NSNumber numberWithDouble:u.pontos]];
+    
+    lista = [Ranking listarPrimeiros:5];
+    [tabela reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void)viewDidUnload
@@ -127,13 +112,15 @@
     [self setViewPontuacao:nil];
     [self setViewRanking:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)logout:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)iniciarPartida:(id)sender {
@@ -144,5 +131,6 @@
 }
 
 - (IBAction)exibirNoMapa:(id)sender {
+
 }
 @end

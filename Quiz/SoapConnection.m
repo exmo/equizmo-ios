@@ -12,12 +12,13 @@
 @property (strong) NSMutableData *responseData;
 @property (strong) id target;
 @property SEL method;
+@property SEL failMethod;
 
 @end
 
 @implementation SoapConnection
 
-@synthesize responseData, target, method;
+@synthesize responseData, target, method, failMethod;
 
 @synthesize soapAddress, targetNamespace, operationName, parameters, headers;
 
@@ -62,10 +63,11 @@
 }
 
 
-- (void)loadServiceWithCallbak: (SEL) _method forInstance: (id) _instance {
+- (void)loadServiceWithCallbak: (SEL) _method forInstance: (id) _instance andFailureCallback: (SEL) _failMethod{
     
     target = _instance;
     method = _method;
+    failMethod = _failMethod;
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:soapAddress]];
     
@@ -103,6 +105,13 @@
     UIApplication* app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = NO;
     NSLog(@"ERROR with theConenction: %@", error);
+    if(target){
+        if([target respondsToSelector:failMethod]){
+            [target performSelectorOnMainThread:failMethod withObject:error waitUntilDone:NO];
+        }else {
+            NSLog(@"Objeto \"%@\" não responde por \"%@\"", target, failMethod);
+        }
+    }
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

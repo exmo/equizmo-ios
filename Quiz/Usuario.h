@@ -11,6 +11,7 @@
 
 @interface Usuario : NSObject
 
+
 @property(retain, nonatomic) NSString *nome;
 @property(retain, nonatomic) NSString *email;
 @property(retain, nonatomic) CLLocation *localizacao;
@@ -19,6 +20,7 @@
 -(void) saveAsCurrent;
 -(void) loadCurrent;
 
-- (void) logarWithCallback: (SEL) _method forInstance: (id) _instance;
++ (Usuario*)sharedInstance;
+- (void) logar;
 
 @end

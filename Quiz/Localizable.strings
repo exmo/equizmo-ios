@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Quiz
+
+  Created by Robson Saraiva Ximenes on 05/07/12.
+  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+*/
+
+"LOGIN_FALHOU"="Seu dispositivo está sem conexão com a Internet.";

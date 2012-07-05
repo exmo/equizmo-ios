@@ -12,12 +12,14 @@
 @interface LoginViewController (){
     CLLocationManager *locationManager;
 }
+//-(void)habilitarTela: (BOOL) habilita;
 
 @end
 
 @implementation LoginViewController
 @synthesize textFieldNome;
 @synthesize textFieldEmail;
+@synthesize botaoLogar;
 @synthesize usuario;
 
 
@@ -27,35 +29,35 @@
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
-
     
-	// Do any additional setup after loading the view, typically from a nib.
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    usuario = [[Usuario alloc] init];
-    usuario.nome = [defaults objectForKey:VAR_NOME];
-    usuario.email = [defaults objectForKey:VAR_EMAIL];
-    
+    // Pega os dados do último acesso local.
+    usuario = [Usuario sharedInstance];
     textFieldNome.text = usuario.nome;
     textFieldEmail.text = usuario.email;
-    
-    
+
+    // Configurando o locationManager para obter as coordenadas do usuário
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
-    // This is the most important property to set for the manager. It ultimately determines how the manager will
-    // attempt to acquire location and thus, the amount of power that will be consumed.
     locationManager.desiredAccuracy = 1.0;
-    // Once configured, the location manager must be "started".
     [locationManager startUpdatingLocation];
 
-
-    
+    // Registra os obeservadores para esta classe.
+    [self configurarObservadores];
 }
+
+/* Se está iniciando a exibição da tela, ou é a primeira entrada ou está voltando para ela.*/
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSLog(@"Tela de login");
+    [self habilitarTela: YES];
+}
+
 
 - (void)viewDidUnload
 {
     [self setTextFieldNome:nil];
     [self setTextFieldEmail:nil];
+    [self setBotaoLogar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -70,62 +72,64 @@
 }
 
 #pragma mark UBActions
+
 - (IBAction)entrar:(id)sender {
-    
+    [self habilitarTela:NO];
     usuario.nome = textFieldNome.text;
     usuario.email = textFieldEmail.text;
+    [usuario logar];
+}
+
+#pragma mark Métodos auxiliares
+
+/* Desabilita os campos da tela para evitar cliques indesejáveis. */
+- (void) habilitarTela: (BOOL) habilita{
+    [botaoLogar setEnabled:habilita];
+    [textFieldNome setEnabled:habilita];
+    [textFieldEmail setEnabled:habilita];
+}
+
+
+#pragma mark NotificationCenter - listeners
+
+/* Registra todos os observadores desta classe */
+-(void) configurarObservadores{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(usuarioSeLogou:) name:EVENTO_LOGIN_OK object:nil];
     
-    [usuario saveAsCurrent];
-    
-    NSLog(@"Entrando com o usuário: %@ (%@)", usuario.nome, usuario.email);
-    
-    [usuario logarWithCallback: @selector(usuarioSeLogou:) forInstance:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(erroDeConexao:) name:EVENTO_LOGIN_FAIL object:nil];
     
 }
 
-- (void) usuarioSeLogou: (NSString *) xml{
-    NSLog(@"Usuario se logou: ]n%@", xml);
+-(void) erroDeConexao: (NSNotification *) notification{
+    UIAlertView *alert = [[UIAlertView alloc] init];
+    alert.title = NSLocalizedString(@"LOGIN_FALHOU",nil);;
+    [alert addButtonWithTitle:NSLocalizedString(@"OK",nil)];
+    [alert show];
     
-    //<return>1661</return>
-    NSRange range1 = [xml rangeOfString:@"<return>"];
-    NSRange range2 = [xml rangeOfString:@"</return>"];
-    
-    int p1 = range1.location+range1.length;
-    int p2 = range2.location - p1;
-    NSString *pontuacaoAtual = [xml substringWithRange:NSMakeRange(p1,p2)];
-    
-    NSLog(@"Pontuação atual: %@", pontuacaoAtual);
-    
-    usuario.pontos = [pontuacaoAtual doubleValue]; 
-    
-    
-    NSLog(@"Pontuação atual: %f", usuario.pontos);
-    
-    
-    [usuario saveAsCurrent];
-    
+    [self habilitarTela:YES];
+}
+
+- (void) usuarioSeLogou: (NSNotification *) notification{
+    NSLog(@"Usuario logado: %@", [(Usuario *)notification.object email]);
     RankingViewController *ranking = [[RankingViewController alloc] init];
-    
+    [botaoLogar setEnabled:YES];
     [self presentModalViewController:ranking animated:YES];
 }
 
 
 #pragma mark CLLocationManagerDelegate
+
+/**
+ * Como não precisamos de muita precisão pegamos apenas a primeira localização;
+ * Desligamos o GPS logo, pois consome energia desnecessária!    
+ */
 - (void)locationManager:(CLLocationManager *)manager
 	didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation{
-    
     usuario.localizacao = newLocation;
-    
-    NSLog(@"LATITUDE: %f", usuario.localizacao.coordinate.latitude);
-    NSLog(@"LONGITUDE: %f", usuario.localizacao.coordinate.longitude);
-    
-    // Quando pegar desliga!!!    
     [locationManager stopUpdatingLocation];
     locationManager.delegate = nil;
 }
-
-
 
 
 #pragma mark UITextFieldDelegate

@@ -17,6 +17,7 @@
 @property (retain, nonatomic) IBOutlet UIView *viewPontuacao;
 @property (retain, nonatomic) IBOutlet UIView *viewRanking;
 
+- (IBAction)logout:(id)sender;
 
 - (IBAction)iniciarPartida:(id)sender;
 - (IBAction)exibirNoMapa:(id)sender;

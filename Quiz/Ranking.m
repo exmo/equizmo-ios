@@ -19,14 +19,12 @@
     NSDictionary *result = [NSDictionary dictionaryWithContentsOfJSONURLString: [NSString stringWithFormat: REST_ADDRESS, numero ]];
     
     NSMutableArray *ranking = [[NSMutableArray alloc]init];
-    NSArray *usuarios = [result objectForKey:@"lista"];
+    NSArray *usuarios = [result objectForKey:@"users"];
     for (NSDictionary *userDic in usuarios) {
         Usuario *u = [[Usuario alloc]init];
         u.email = [userDic objectForKey:@"email"];
         u.nome = [userDic objectForKey:@"name"];
         u.pontos = [[userDic objectForKey:@"points"] doubleValue];
-
-        
         [ranking addObject:u];
     }
     

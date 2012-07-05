@@ -8,6 +8,7 @@
 
 #import "Jogo.h"
 #import "NSDictionary+JSON.h"
+#import "Usuario.h"
 
 #define REST_ADDRESS_GET_QUIZ @"http://quiz-exmo.rhcloud.com/rest/quiz/get/%@"
 #define REST_ADDRESS_ADD_POINTS @"http://quiz-exmo.rhcloud.com/rest/user/addPoints/%@/%i"
@@ -41,8 +42,9 @@
 }
 
 - (int) informarPontuacao{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *email = [defaults objectForKey:VAR_EMAIL];
+    
+    Usuario *u = [Usuario sharedInstance];
+    NSString *email = u.email;
     
     NSString *URL = [NSString stringWithFormat: REST_ADDRESS_ADD_POINTS, email, (int)[self pontuacao]];
     NSLog(@"URL: %@", URL);

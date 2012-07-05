@@ -225,24 +225,18 @@
 - (void) encerrarJogo{
     
     int total = [jogo informarPontuacao];
-    
-    
-    Usuario *u = [[Usuario alloc]init ];
-    [u loadCurrent];
+    Usuario *u = [Usuario sharedInstance];
     u.pontos = total;
     [u saveAsCurrent];
     
     totalPontos.text = [NSString stringWithFormat:@"%i", total];
     
-//    [self.view addSubview:resultadoView];
-    
     resultadoView.center = CGPointMake( self.view.frame.size.width/2, self.view.frame.size.height/2);
-    resultadoView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9];
+    resultadoView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7];
     resultadoView.layer.cornerRadius = 10;
     resultadoView.layer.masksToBounds = YES;
     resultadoView.layer.borderWidth = 3.0f;
     resultadoView.layer.borderColor = [UIColor orangeColor].CGColor; 
-    
     
     [UIView transitionWithView:self.view duration:0.8
                        options:UIViewAnimationOptionTransitionCrossDissolve

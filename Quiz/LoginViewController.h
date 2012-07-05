@@ -17,6 +17,10 @@
 
 @property (retain, nonatomic) IBOutlet UITextField *textFieldNome;
 @property (retain, nonatomic) IBOutlet UITextField *textFieldEmail;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *botaoLogar;
 
 - (IBAction)entrar:(id)sender;
+
+- (void) usuarioSeLogou: (NSNotification *) notification;
+
 @end
