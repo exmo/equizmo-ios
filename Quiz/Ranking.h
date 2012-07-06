@@ -10,6 +10,6 @@
 
 @interface Ranking : NSObject
 
-+ (NSArray *) listarPrimeiros: (int) numero;
++ (NSArray *) firsts: (int) offset;
 
 @end

@@ -7,28 +7,28 @@
 //
 
 #import "Ranking.h"
+#import "User.h"
 #import "NSDictionary+JSON.h"
-#import "Usuario.h"
 
 #define REST_ADDRESS @"http://quiz-exmo.rhcloud.com/rest/user/ranking/%i"
 
 @implementation Ranking
 
-+ (NSArray *) listarPrimeiros: (int) numero{
++ (NSArray *) firsts:(int)offset{
     
-    NSDictionary *result = [NSDictionary dictionaryWithContentsOfJSONURLString: [NSString stringWithFormat: REST_ADDRESS, numero ]];
+    NSDictionary *result = [NSDictionary dictionaryWithContentsOfJSONURLString: [NSString stringWithFormat: REST_ADDRESS, offset ]];
     
-    NSMutableArray *ranking = [[NSMutableArray alloc]init];
-    NSArray *usuarios = [result objectForKey:@"users"];
-    for (NSDictionary *userDic in usuarios) {
-        Usuario *u = [[Usuario alloc]init];
+    NSMutableArray *firstsArray = [[NSMutableArray alloc]init];
+    NSArray *userArray = [result objectForKey:@"users"];
+    for (NSDictionary *userDic in userArray) {
+        User *u = [[User alloc]init];
         u.email = [userDic objectForKey:@"email"];
-        u.nome = [userDic objectForKey:@"name"];
-        u.pontos = [[userDic objectForKey:@"points"] doubleValue];
-        [ranking addObject:u];
+        u.name = [userDic objectForKey:@"name"];
+        u.points = [[userDic objectForKey:@"points"] doubleValue];
+        [firstsArray addObject:u];
     }
     
-    return ranking;
+    return firstsArray;
 }
 
 @end

@@ -22,12 +22,8 @@
     
     [self customizeAppearance];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController_iPhone" bundle:nil];
-        
-    } else {
-        self.viewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController_iPad" bundle:nil];
-    }
+    self.viewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;

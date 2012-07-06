@@ -309,43 +309,43 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">labelNome</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="441103769"/>
-					</object>
-					<int key="connectionID">18</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">labelPontos</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="982782842"/>
-					</object>
-					<int key="connectionID">19</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">viewPontuacao</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="196311559"/>
-					</object>
-					<int key="connectionID">27</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">tabela</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="597914821"/>
-					</object>
-					<int key="connectionID">12</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">viewRanking</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="925552048"/>
 					</object>
 					<int key="connectionID">31</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">labelName</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="441103769"/>
+					</object>
+					<int key="connectionID">35</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">labelPoints</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="982782842"/>
+					</object>
+					<int key="connectionID">36</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">viewScore</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="196311559"/>
+					</object>
+					<int key="connectionID">38</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">table</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="597914821"/>
+					</object>
+					<int key="connectionID">39</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -365,12 +365,12 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">iniciarPartida:</string>
+						<string key="label">startGame:</string>
 						<reference key="source" ref="603581911"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">26</int>
+					<int key="connectionID">34</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -502,7 +502,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">33</int>
+			<int key="maxID">39</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -510,50 +510,45 @@
 					<string key="className">RankingViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="exibirNoMapa:">id</string>
-						<string key="iniciarPartida:">id</string>
 						<string key="logout:">id</string>
+						<string key="startGame:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="exibirNoMapa:">
-							<string key="name">exibirNoMapa:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="iniciarPartida:">
-							<string key="name">iniciarPartida:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="logout:">
 							<string key="name">logout:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="startGame:">
+							<string key="name">startGame:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="labelNome">UILabel</string>
-						<string key="labelPontos">UILabel</string>
-						<string key="tabela">UITableView</string>
-						<string key="viewPontuacao">UIView</string>
+						<string key="labelName">UILabel</string>
+						<string key="labelPoints">UILabel</string>
+						<string key="table">UITableView</string>
 						<string key="viewRanking">UIView</string>
+						<string key="viewScore">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="labelNome">
-							<string key="name">labelNome</string>
+						<object class="IBToOneOutletInfo" key="labelName">
+							<string key="name">labelName</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="labelPontos">
-							<string key="name">labelPontos</string>
+						<object class="IBToOneOutletInfo" key="labelPoints">
+							<string key="name">labelPoints</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="tabela">
-							<string key="name">tabela</string>
+						<object class="IBToOneOutletInfo" key="table">
+							<string key="name">table</string>
 							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="viewPontuacao">
-							<string key="name">viewPontuacao</string>
-							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="viewRanking">
 							<string key="name">viewRanking</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewScore">
+							<string key="name">viewScore</string>
 							<string key="candidateClassName">UIView</string>
 						</object>
 					</dictionary>

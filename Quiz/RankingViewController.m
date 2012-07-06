@@ -7,9 +7,9 @@
 //
 
 #import "RankingViewController.h"
-#import "Usuario.h"
 #import "Ranking.h"
-#import "SelecionarCategoriaViewController.h"
+#import "User.h"
+#import "CategoryViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface RankingViewController ()
@@ -17,11 +17,11 @@
 @end
 
 @implementation RankingViewController
-@synthesize viewPontuacao;
+@synthesize viewScore;
 @synthesize viewRanking;
-@synthesize labelPontos;
-@synthesize labelNome;
-@synthesize tabela, lista;
+@synthesize labelPoints;
+@synthesize labelName;
+@synthesize table, users;
 
 
 
@@ -33,25 +33,25 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [lista count];
+    return [users count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString * cellId = @"CelularProposicao";
+    static NSString * cellId = @"propositionCell";
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
     }
     
-    Usuario  *usuario = (Usuario *)[lista objectAtIndex:indexPath.row];
+    User *user = (User *)[users objectAtIndex:indexPath.row];
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *pontuacao = [formatter stringFromNumber:[NSNumber numberWithDouble:usuario.pontos]];
+    NSString *score = [formatter stringFromNumber:[NSNumber numberWithDouble:user.points]];
     
-    cell.textLabel.text = [NSString stringWithFormat:@" %d - %@ (%@ pontos)", (indexPath.row+1), usuario.nome, pontuacao];
+    cell.textLabel.text = [NSString stringWithFormat:@" %d - %@ (%@)", (indexPath.row+1), user.name, score];
     
     return cell;
 }
@@ -75,10 +75,10 @@
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
     
-    viewPontuacao.layer.cornerRadius = 10;
-    viewPontuacao.layer.masksToBounds = YES;
-    viewPontuacao.layer.borderWidth = 3.0f;
-    viewPontuacao.layer.borderColor = [UIColor orangeColor].CGColor; 
+    viewScore.layer.cornerRadius = 10;
+    viewScore.layer.masksToBounds = YES;
+    viewScore.layer.borderWidth = 3.0f;
+    viewScore.layer.borderColor = [UIColor orangeColor].CGColor; 
     
     viewRanking.layer.cornerRadius = 10;
     viewRanking.layer.masksToBounds = YES;
@@ -88,28 +88,28 @@
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self exibirDados];
+    [self updateDataOnScreen];
 }
 
-- (void) exibirDados{
+- (void) updateDataOnScreen{
     NSLog(@"Carregando dados para tela de ranking!");
     
-    Usuario *u = [Usuario sharedInstance];
+    User *u = [User sharedInstance];
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    labelNome.text = u.nome;
-    labelPontos.text = [formatter stringFromNumber:[NSNumber numberWithDouble:u.pontos]];
+    labelName.text = u.name;
+    labelPoints.text = [formatter stringFromNumber:[NSNumber numberWithDouble:u.points]];
     
-    lista = [Ranking listarPrimeiros:5];
-    [tabela reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    users = [Ranking firsts:5];
+    [table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void)viewDidUnload
 {
-    [self setTabela:nil];
-    [self setLabelNome:nil];
-    [self setLabelPontos:nil];
-    [self setViewPontuacao:nil];
+    [self setTable:nil];
+    [self setLabelName:nil];
+    [self setLabelPoints:nil];
+    [self setViewScore:nil];
     [self setViewRanking:nil];
     [super viewDidUnload];
 }
@@ -123,10 +123,10 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (IBAction)iniciarPartida:(id)sender {
-    SelecionarCategoriaViewController *categorias = [[SelecionarCategoriaViewController alloc] init];
+- (IBAction)startGame:(id)sender {
+    CategoryViewController *categorias = [[CategoryViewController alloc] init];
     categorias.mainModel = self;
-    lista = nil;
+    users = nil;
     [self presentModalViewController:categorias animated:YES];
 }
 

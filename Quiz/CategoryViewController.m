@@ -6,22 +6,22 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SelecionarCategoriaViewController.h"
-#import "JogoViewController.h"
+#import "CategoryViewController.h"
+#import "GameViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "Categoria.h"
+#import "Category.h"
 
-@interface SelecionarCategoriaViewController ()
+@interface CategoryViewController ()
 
 @end
 
-@implementation SelecionarCategoriaViewController
+@implementation CategoryViewController
 
-@synthesize viewCategoria;
-@synthesize lista;
-@synthesize indicadorAtividade;
+@synthesize viewCategory;
+@synthesize categoryList;
+@synthesize activity;
 @synthesize mainModel;
-@synthesize tabelaCategorias;
+@synthesize tableCategory;
 
 #pragma mark UITableViewDelegate
 
@@ -31,7 +31,7 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [lista count];
+    return [categoryList count];
 }
 
 
@@ -42,16 +42,16 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     
-    NSString  *categoria = [lista objectAtIndex:indexPath.row];    
-    cell.textLabel.text = [NSString stringWithFormat:@" %@", categoria];
+    NSString  *category = [categoryList objectAtIndex:indexPath.row];    
+    cell.textLabel.text = [NSString stringWithFormat:@" %@", category];
 
     return cell;
 }
 
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    JogoViewController *jogo = [[JogoViewController alloc] init];
-    jogo.categoria = [lista objectAtIndex:indexPath.row];
+    GameViewController *jogo = [[GameViewController alloc] init];
+    jogo.category = [categoryList objectAtIndex:indexPath.row];
     jogo.mainModal = self;
     [self presentModalViewController:jogo animated:YES];
 }
@@ -75,30 +75,30 @@
     // Do any additional setup after loading the view from its nib.
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
     
-    viewCategoria.layer.cornerRadius = 10;
-    viewCategoria.layer.masksToBounds = YES;
-    viewCategoria.layer.borderWidth = 3.0f;
-    viewCategoria.layer.borderColor = [UIColor orangeColor].CGColor; 
+    viewCategory.layer.cornerRadius = 10;
+    viewCategory.layer.masksToBounds = YES;
+    viewCategory.layer.borderWidth = 3.0f;
+    viewCategory.layer.borderColor = [UIColor orangeColor].CGColor; 
     
     
     
-    lista = [NSArray arrayWithObjects: nil];
-    [[[Categoria alloc]init]carregarCategoriasWithCallback:@selector(atualizarTabela:) forInstance:self];
-    [indicadorAtividade startAnimating];
+    categoryList = [NSArray arrayWithObjects: nil];
+    [[[Category alloc]init] loadCategoriesWithCallback:@selector(reloadCategoryDataSource:) forInstance:self];
+    [activity startAnimating];
 }
 
-- (void) atualizarTabela: (NSArray *) categorias{
-    lista = categorias;
-    [tabelaCategorias reloadData];
-    [indicadorAtividade stopAnimating];
+- (void) reloadCategoryDataSource: (NSArray *) categories{
+    categoryList = categories;
+    [tableCategory reloadData];
+    [activity stopAnimating];
 }
 
 
 - (void)viewDidUnload
 {
-    [self setViewCategoria:nil];
-    [self setTabelaCategorias:nil];
-    [self setIndicadorAtividade:nil];
+    [self setViewCategory:nil];
+    [self setTableCategory:nil];
+    [self setActivity:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -109,7 +109,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)cancelar:(id)sender {
+- (IBAction)cancel:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
 }
 @end

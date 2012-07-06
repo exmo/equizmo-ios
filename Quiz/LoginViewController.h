@@ -8,19 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-
-#import "Usuario.h"
+#import "User.h"
 
 @interface LoginViewController : UIViewController<UITextFieldDelegate, CLLocationManagerDelegate>
 
-@property Usuario *usuario;
+@property User *user;
 
-@property (retain, nonatomic) IBOutlet UITextField *textFieldNome;
+@property (retain, nonatomic) IBOutlet UITextField *textFieldName;
 @property (retain, nonatomic) IBOutlet UITextField *textFieldEmail;
-@property (unsafe_unretained, nonatomic) IBOutlet UIButton *botaoLogar;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *buttonLogin;
 
-- (IBAction)entrar:(id)sender;
+- (IBAction)login:(id)sender;
 
-- (void) usuarioSeLogou: (NSNotification *) notification;
+- (void) userDidLoggedIn: (NSNotification *) notification;
 
 @end

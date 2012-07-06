@@ -12,15 +12,14 @@
 @interface LoginViewController (){
     CLLocationManager *locationManager;
 }
-//-(void)habilitarTela: (BOOL) habilita;
 
 @end
 
 @implementation LoginViewController
-@synthesize textFieldNome;
+@synthesize textFieldName;
 @synthesize textFieldEmail;
-@synthesize botaoLogar;
-@synthesize usuario;
+@synthesize buttonLogin;
+@synthesize user;
 
 
 #pragma mark ViewController Life Cycle
@@ -30,10 +29,10 @@
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
     
-    // Pega os dados do último acesso local.
-    usuario = [Usuario sharedInstance];
-    textFieldNome.text = usuario.nome;
-    textFieldEmail.text = usuario.email;
+    // Last loged user.
+    user = [User sharedInstance];
+    textFieldName.text = user.name;
+    textFieldEmail.text = user.email;
 
     // Configurando o locationManager para obter as coordenadas do usuário
     locationManager = [[CLLocationManager alloc] init];
@@ -42,22 +41,22 @@
     [locationManager startUpdatingLocation];
 
     // Registra os obeservadores para esta classe.
-    [self configurarObservadores];
+    [self configureTheListeners];
 }
 
 /* Se está iniciando a exibição da tela, ou é a primeira entrada ou está voltando para ela.*/
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     NSLog(@"Tela de login");
-    [self habilitarTela: YES];
+    [self setViewEnabled: YES];
 }
 
 
 - (void)viewDidUnload
 {
-    [self setTextFieldNome:nil];
+    [self setTextFieldName:nil];
     [self setTextFieldEmail:nil];
-    [self setBotaoLogar:nil];
+    [self setButtonLogin:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -73,46 +72,46 @@
 
 #pragma mark UBActions
 
-- (IBAction)entrar:(id)sender {
-    [self habilitarTela:NO];
-    usuario.nome = textFieldNome.text;
-    usuario.email = textFieldEmail.text;
-    [usuario logar];
+- (IBAction)login:(id)sender {
+    [self setViewEnabled:NO];
+    user.name = textFieldName.text;
+    user.email = textFieldEmail.text;
+    [user login];
 }
 
 #pragma mark Métodos auxiliares
 
 /* Desabilita os campos da tela para evitar cliques indesejáveis. */
-- (void) habilitarTela: (BOOL) habilita{
-    [botaoLogar setEnabled:habilita];
-    [textFieldNome setEnabled:habilita];
-    [textFieldEmail setEnabled:habilita];
+- (void) setViewEnabled: (BOOL) enabled{
+    [buttonLogin setEnabled:enabled];
+    [textFieldName setEnabled:enabled];
+    [textFieldEmail setEnabled:enabled];
 }
 
 
 #pragma mark NotificationCenter - listeners
 
 /* Registra todos os observadores desta classe */
--(void) configurarObservadores{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(usuarioSeLogou:) name:EVENTO_LOGIN_OK object:nil];
+-(void) configureTheListeners{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLoggedIn:) name:EVENT_LOGIN_OK object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(erroDeConexao:) name:EVENTO_LOGIN_FAIL object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLoggedWithError:) name:EVENT_LOGIN_FAIL object:nil];
     
 }
 
--(void) erroDeConexao: (NSNotification *) notification{
+-(void) userDidLoggedWithError: (NSNotification *) notification{
     UIAlertView *alert = [[UIAlertView alloc] init];
-    alert.title = NSLocalizedString(@"LOGIN_FALHOU",nil);;
+    alert.title = NSLocalizedString(@"LOGIN_FAILED",nil);;
     [alert addButtonWithTitle:NSLocalizedString(@"OK",nil)];
     [alert show];
     
-    [self habilitarTela:YES];
+    [self setViewEnabled:YES];
 }
 
-- (void) usuarioSeLogou: (NSNotification *) notification{
-    NSLog(@"Usuario logado: %@", [(Usuario *)notification.object email]);
+- (void) userDidLoggedIn: (NSNotification *) notification{
+    NSLog(@"Usuario logado: %@", [(User *)notification.object email]);
     RankingViewController *ranking = [[RankingViewController alloc] init];
-    [botaoLogar setEnabled:YES];
+    [buttonLogin setEnabled:YES];
     [self presentModalViewController:ranking animated:YES];
 }
 
@@ -126,7 +125,7 @@
 - (void)locationManager:(CLLocationManager *)manager
 	didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation{
-    usuario.localizacao = newLocation;
+    user.location = newLocation;
     [locationManager stopUpdatingLocation];
     locationManager.delegate = nil;
 }

@@ -9,11 +9,11 @@
 #ifndef Quiz_Constants_h
 #define Quiz_Constants_h
 
-#define VAR_NOME @"nome"
-#define VAR_EMAIL @"email"
-#define VAR_PONTOS @"pontos"
+#define VAR_NAME @"user_name"
+#define VAR_EMAIL @"user_email"
+#define VAR_POINTS @"user_points"
 
-#define EVENTO_LOGIN_OK @"loginEfetuado"
-#define EVENTO_LOGIN_FAIL @"loginFalhou"
+#define EVENT_LOGIN_OK @"EVENT_LOGIN_OK"
+#define EVENT_LOGIN_FAIL @"EVENT_LOGIN_FAIL"
 
 #endif

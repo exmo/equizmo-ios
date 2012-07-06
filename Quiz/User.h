@@ -1,5 +1,5 @@
 //
-//  Usuario.h
+//  User.h
 //  Quiz
 //
 //  Created by Robson Saraiva Ximenes on 19/06/12.
@@ -9,18 +9,18 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface Usuario : NSObject
+@interface User : NSObject
 
 
-@property(retain, nonatomic) NSString *nome;
+@property(retain, nonatomic) NSString *name;
 @property(retain, nonatomic) NSString *email;
-@property(retain, nonatomic) CLLocation *localizacao;
-@property double pontos;
+@property(retain, nonatomic) CLLocation *location;
+@property double points;
 
 -(void) saveAsCurrent;
 -(void) loadCurrent;
 
-+ (Usuario*)sharedInstance;
-- (void) logar;
++ (User *)sharedInstance;
+- (void) login;
 
 @end
