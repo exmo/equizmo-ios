@@ -13,6 +13,15 @@
 @synthesize enunciation, answer, playerAnswer, propositions;
 
 
+- (id) init{
+    self = [super init];
+    
+    self.playerAnswer = -1;
+    
+    return self;
+}
+
+
 - (BOOL) isItRight{
     return [[NSNumber numberWithInt:answer] isEqualToNumber:[NSNumber numberWithInt:playerAnswer]];
 }

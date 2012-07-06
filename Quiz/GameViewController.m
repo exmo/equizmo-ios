@@ -82,8 +82,7 @@
     [playerCerto prepareToPlay];
     [playerErrado prepareToPlay];    
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    labelName.text = [defaults objectForKey:@"nome"];
+    labelName.text = [User sharedInstance].name;
 
     game = [[Game alloc] init];
     game.category = category;
@@ -167,8 +166,13 @@
         Question *q = [game.questions objectAtIndex:currentQuestionIndex];
         q.playerAnswer = indexPath.row;
         
-         UITableViewCell *cell=[_tableView cellForRowAtIndexPath:indexPath];
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSString *score = [formatter stringFromNumber:[NSNumber numberWithDouble:[game calculateScore]]];
+        NSLog(@"Pontos: %@", score);
+        labelPoints.text = score;
         
+         UITableViewCell *cell=[_tableView cellForRowAtIndexPath:indexPath];
         if([q isItRight]){
             cell.textLabel.highlightedTextColor = [UIColor greenColor];
             [playerErrado stop];
@@ -180,10 +184,7 @@
 
         }
         
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        NSString *score = [formatter stringFromNumber:[NSNumber numberWithDouble:[game calculateScore]]];
-        labelPoints.text = score;
+        
         
         [self performSelector:@selector(exibirProximaQuestao) withObject:nil afterDelay:2.5];
         
@@ -198,7 +199,7 @@
 -(void) exibirProximaQuestao{
     currentQuestionIndex++;
     if(currentQuestionIndex < [game.questions count]){
-        [UIView transitionWithView:viewQuestionsAndPropositions duration:1.2
+        [UIView transitionWithView:viewQuestionsAndPropositions duration:0.8
                            options:UIViewAnimationOptionTransitionCrossDissolve
                         animations:^ { 
                             
