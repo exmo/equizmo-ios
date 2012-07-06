@@ -60,7 +60,7 @@
 		3910E9E515A4699000FF54A9 /* NSDictionary+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSON.m"; sourceTree = "<group>"; };
 		3910E9E715A47B1C00FF54A9 /* Ranking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ranking.h; sourceTree = "<group>"; };
 		3910E9E815A47B1C00FF54A9 /* Ranking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ranking.m; sourceTree = "<group>"; };
-		3910E9EA15A4B46B00FF54A9 /* LabelFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelFormater.h; sourceTree = "<group>"; };
+		3910E9EA15A4B46B00FF54A9 /* LabelFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; path = LabelFormater.h; sourceTree = "<group>"; };
 		3910E9EB15A4B46B00FF54A9 /* LabelFormater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelFormater.m; sourceTree = "<group>"; };
 		391EC51615A5FC93000DE287 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
 		391EC51915A626D1000DE287 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
