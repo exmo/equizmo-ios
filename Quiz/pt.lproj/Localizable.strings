@@ -1,0 +1,28 @@
+/* 
+ Localizable.strings
+ Quiz
+ 
+ Created by Robson Saraiva Ximenes on 05/07/12.
+ Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+ */
+
+"LOGIN_FAILED"="Seu dispositivo está sem conexão com a Internet.";
+
+
+// Login
+"E-mail"="E-mail";
+"Name"="Nome";
+"Enter"="Entrar";
+"developed by eXmo"="desenvolvido por eXmo";
+
+// Ranking
+"Play"="Jogar";
+
+// Category
+"Select the category:"="Selecione uma categoria:";
+"Start"="Iniciar";
+
+//Game
+"Question"="Pergunta"; // Question 1 of 4
+"Score:"="Pontuação:";
+"Exit"="Encerrar";

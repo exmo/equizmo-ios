@@ -6,4 +6,23 @@
   Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 */
 
-"LOGIN_FAILED"="Seu dispositivo está sem conexão com a Internet.";
+"LOGIN_FAILED"="Check you internet connection.";
+
+
+// Login
+"E-mail"="E-mail";
+"Name"="Nme";
+"Enter"="Enter";
+"developed by eXmo"="developed by eXmo";
+
+// Ranking
+"Play"="New Game";
+
+// Category
+"Select the category:"="Select the category:";
+"Start"="Start";
+
+//Game
+"Question"="Question"; // Question 1 of 4
+"Score:"="Score:";
+"Exit"="Exit";

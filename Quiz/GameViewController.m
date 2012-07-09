@@ -166,11 +166,9 @@
         Question *q = [game.questions objectAtIndex:currentQuestionIndex];
         q.playerAnswer = indexPath.row;
         
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        NSString *score = [formatter stringFromNumber:[NSNumber numberWithDouble:[game calculateScore]]];
-        NSLog(@"Pontos: %@", score);
-        labelPoints.text = score;
+        NSNumber *score = [NSNumber numberWithDouble:[game calculateScore]];
+        labelPoints.text = [NSNumberFormatter localizedStringFromNumber:score
+                                                                numberStyle:NSNumberFormatterDecimalStyle];
         
          UITableViewCell *cell=[_tableView cellForRowAtIndexPath:indexPath];
         if([q isItRight]){
@@ -184,9 +182,7 @@
 
         }
         
-        
-        
-        [self performSelector:@selector(exibirProximaQuestao) withObject:nil afterDelay:2.5];
+        [self performSelector:@selector(exibirProximaQuestao) withObject:nil afterDelay:1.5];
         
     }
     
@@ -217,13 +213,11 @@
         
     }else {
         // Envia para o servidor e exibe o resultado;
-        
         [self encerrarJogo];
     }
 }
 
 - (void) encerrarJogo{
-    
     int total = [game sendScore];
     User *u = [User sharedInstance];
     u.points = total;
@@ -242,12 +236,9 @@
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     animations:^ { 
                         [self.view addSubview:viewResult]; 
-                        
-                        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-                        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-                        NSString *pontuacao = [formatter stringFromNumber:[NSNumber numberWithDouble:[game calculateScore]]];
-                        labelFinalScore.text =[NSString stringWithFormat:@"%@",  pontuacao];
-                        
+                        NSNumber *score = [NSNumber numberWithDouble:[game calculateScore]];
+                        labelFinalScore.text = [NSNumberFormatter localizedStringFromNumber:score
+                                                         numberStyle:NSNumberFormatterDecimalStyle];
                         [labelFinalScore setHidden:NO];
                     }
                     completion:nil];

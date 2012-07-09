@@ -47,9 +47,8 @@
     
     User *user = (User *)[users objectAtIndex:indexPath.row];
     
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSString *score = [formatter stringFromNumber:[NSNumber numberWithDouble:user.points]];
+    NSString *score = [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithDouble:user.points]
+                                                        numberStyle:NSNumberFormatterDecimalStyle];
     
     cell.textLabel.text = [NSString stringWithFormat:@" %d - %@ (%@)", (indexPath.row+1), user.name, score];
     
@@ -95,10 +94,12 @@
     NSLog(@"Carregando dados para tela de ranking!");
     
     User *u = [User sharedInstance];
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     labelName.text = u.name;
-    labelPoints.text = [formatter stringFromNumber:[NSNumber numberWithDouble:u.points]];
+    
+    NSNumber *score = [NSNumber numberWithDouble:u.points];
+    labelPoints.text = [NSNumberFormatter localizedStringFromNumber:score
+                                                        numberStyle:NSNumberFormatterDecimalStyle];
+    
     
     users = [Ranking firsts:5];
     [table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
