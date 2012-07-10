@@ -1,8 +1,10 @@
 equizmo-ios
 ===========
 
-Este projeto temo como objetivo exemplificar a implementação de um projeto iOS consumindo webservices SOAP e REST;
-Exemplos de geolocalização, soap, rest, internacionalização, formatações, organização de códigos, ...
+O eQuizmo é um jogo opensource em formato de quiz. O participante deve responder quizes para somar pontos e ficar bem no ranking geral!
+
+Este projeto temo como objetivo exemplificar a implementação de um projeto iOS com as seguintes funcionalidades:
+geolocalização, soap, rest, internacionalização, formatações, organização de códigos, ...
 
 Mais detalhes na [wiki do projeto](https://github.com/exmo/equizmo-ios/wiki)
 
