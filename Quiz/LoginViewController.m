@@ -44,6 +44,7 @@
     [self configureTheListeners];
 }
 
+
 /* Se está iniciando a exibição da tela, ou é a primeira entrada ou está voltando para ela.*/
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -89,6 +90,8 @@
 }
 
 
+
+
 #pragma mark NotificationCenter - listeners
 
 /* Registra todos os observadores desta classe */
@@ -114,7 +117,6 @@
     [buttonLogin setEnabled:YES];
     [self presentModalViewController:ranking animated:YES];
 }
-
 
 #pragma mark CLLocationManagerDelegate
 
