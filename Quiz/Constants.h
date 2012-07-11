@@ -13,6 +13,8 @@
 #define VAR_EMAIL @"user_email"
 #define VAR_POINTS @"user_points"
 
+#define PREFS_SOUND_ENABLED @"isSoundEnabled"
+
 #define EVENT_LOGIN_OK @"EVENT_LOGIN_OK"
 #define EVENT_LOGIN_FAIL @"EVENT_LOGIN_FAIL"
 

@@ -12,11 +12,14 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "LabelFormater.h"
+#import "Preference.h"
 
 @interface GameViewController (){
     int currentQuestionIndex;
     NSArray *letters;
 }
+
+@property Preference *preference;
 
 @end
 
@@ -39,6 +42,7 @@
 
 @synthesize game, category;
 
+@synthesize preference;
 
 #pragma mark LifeCycle
 
@@ -46,7 +50,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        preference = [[Preference alloc] init ];
+        [preference load];
     }
     return self;
 }
@@ -96,6 +101,7 @@
 
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [preference load];
     [self exibirProximaQuestao];
 }
 
@@ -174,12 +180,13 @@
         if([q isItRight]){
             cell.textLabel.highlightedTextColor = [UIColor greenColor];
             [playerErrado stop];
-            [playerCerto play]; 
+            if(preference.isSoundEnabled)
+                [playerCerto play]; 
         }else{
             cell.textLabel.highlightedTextColor = [UIColor redColor];
             [playerCerto stop];
-            [playerErrado play];
-
+            if(preference.isSoundEnabled)
+                [playerErrado play];
         }
         
         [self performSelector:@selector(exibirProximaQuestao) withObject:nil afterDelay:1.5];

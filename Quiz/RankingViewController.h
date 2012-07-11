@@ -21,4 +21,6 @@
 
 - (IBAction)startGame:(id)sender;
 
+- (IBAction)configureAccount:(id)sender;
+
 @end

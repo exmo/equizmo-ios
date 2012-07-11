@@ -12,6 +12,8 @@
 #import "CategoryViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "PreferencesViewController.h"
+
 @interface RankingViewController ()
 
 @end
@@ -131,7 +133,10 @@
     [self presentModalViewController:categorias animated:YES];
 }
 
-- (IBAction)exibirNoMapa:(id)sender {
-
+- (IBAction)configureAccount:(id)sender {
+    PreferencesViewController *preferences = [[PreferencesViewController alloc] init];
+    [self presentModalViewController:preferences animated:YES];
 }
+
+
 @end
