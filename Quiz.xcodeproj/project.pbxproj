@@ -75,6 +75,12 @@
 		39D99D1E15AEFA110097DC5A /* PreferencesSwichtCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D1D15AEFA110097DC5A /* PreferencesSwichtCell.xib */; };
 		39D99D2115AF04A70097DC5A /* PreferencesStepperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D2015AF04A70097DC5A /* PreferencesStepperCell.m */; };
 		39D99D2315AF04C30097DC5A /* PreferencesStepperCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D2215AF04C30097DC5A /* PreferencesStepperCell.xib */; };
+		39D99D2A15AF31380097DC5A /* configuration.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D2915AF31380097DC5A /* configuration.png */; };
+		39D99D2C15AF327A0097DC5A /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D2B15AF327A0097DC5A /* map.png */; };
+		39D99D3015AF341F0097DC5A /* LocalizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D2E15AF341C0097DC5A /* LocalizationViewController.m */; };
+		39D99D3115AF341F0097DC5A /* LocalizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D2F15AF341D0097DC5A /* LocalizationViewController.xib */; };
+		39D99D3515AF41DE0097DC5A /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D3415AF41DE0097DC5A /* UserAnnotation.m */; };
+		39D99D3B15AF53BF0097DC5A /* snowman.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D3A15AF53BF0097DC5A /* snowman.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,6 +169,14 @@
 		39D99D1F15AF04A70097DC5A /* PreferencesStepperCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesStepperCell.h; sourceTree = "<group>"; };
 		39D99D2015AF04A70097DC5A /* PreferencesStepperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesStepperCell.m; sourceTree = "<group>"; };
 		39D99D2215AF04C30097DC5A /* PreferencesStepperCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesStepperCell.xib; sourceTree = "<group>"; };
+		39D99D2915AF31380097DC5A /* configuration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = configuration.png; sourceTree = "<group>"; };
+		39D99D2B15AF327A0097DC5A /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		39D99D2D15AF341B0097DC5A /* LocalizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationViewController.h; sourceTree = "<group>"; };
+		39D99D2E15AF341C0097DC5A /* LocalizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizationViewController.m; sourceTree = "<group>"; };
+		39D99D2F15AF341D0097DC5A /* LocalizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocalizationViewController.xib; sourceTree = "<group>"; };
+		39D99D3315AF41DE0097DC5A /* UserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnnotation.h; sourceTree = "<group>"; };
+		39D99D3415AF41DE0097DC5A /* UserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnnotation.m; sourceTree = "<group>"; };
+		39D99D3A15AF53BF0097DC5A /* snowman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowman.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +253,9 @@
 		3956534015909E0F00513FE3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				39D99D3A15AF53BF0097DC5A /* snowman.png */,
+				39D99D2B15AF327A0097DC5A /* map.png */,
+				39D99D2915AF31380097DC5A /* configuration.png */,
 				39D99D1215AE0D7A0097DC5A /* prefes.png */,
 				39D99D0B15ADC6840097DC5A /* snow.png */,
 				39D99CF215AB45180097DC5A /* button_background.png */,
@@ -293,6 +310,9 @@
 				39D99D0D15AE0B660097DC5A /* PreferencesViewController.h */,
 				39D99D0E15AE0B660097DC5A /* PreferencesViewController.m */,
 				39D99D0F15AE0B680097DC5A /* PreferencesViewController.xib */,
+				39D99D2D15AF341B0097DC5A /* LocalizationViewController.h */,
+				39D99D2E15AF341C0097DC5A /* LocalizationViewController.m */,
+				39D99D2F15AF341D0097DC5A /* LocalizationViewController.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -350,6 +370,7 @@
 		39D99CF415AB46E70097DC5A /* component */ = {
 			isa = PBXGroup;
 			children = (
+				39D99D3215AF41BA0097DC5A /* Location */,
 				39D99D1715AEF8BE0097DC5A /* Preferences */,
 				39D99D0515ADAE9D0097DC5A /* Animation */,
 				39D99CFE15AB4E8E0097DC5A /* Locallized */,
@@ -390,6 +411,15 @@
 				39D99D2215AF04C30097DC5A /* PreferencesStepperCell.xib */,
 			);
 			name = Preferences;
+			sourceTree = "<group>";
+		};
+		39D99D3215AF41BA0097DC5A /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				39D99D3315AF41DE0097DC5A /* UserAnnotation.h */,
+				39D99D3415AF41DE0097DC5A /* UserAnnotation.m */,
+			);
+			name = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -483,6 +513,10 @@
 				39D99D1315AE0D7A0097DC5A /* prefes.png in Resources */,
 				39D99D1E15AEFA110097DC5A /* PreferencesSwichtCell.xib in Resources */,
 				39D99D2315AF04C30097DC5A /* PreferencesStepperCell.xib in Resources */,
+				39D99D2A15AF31380097DC5A /* configuration.png in Resources */,
+				39D99D2C15AF327A0097DC5A /* map.png in Resources */,
+				39D99D3115AF341F0097DC5A /* LocalizationViewController.xib in Resources */,
+				39D99D3B15AF53BF0097DC5A /* snowman.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +549,8 @@
 				39D99D1615AE13BA0097DC5A /* Preference.m in Sources */,
 				39D99D1A15AEF9BD0097DC5A /* PreferencesSwichtCell.m in Sources */,
 				39D99D2115AF04A70097DC5A /* PreferencesStepperCell.m in Sources */,
+				39D99D3015AF341F0097DC5A /* LocalizationViewController.m in Sources */,
+				39D99D3515AF41DE0097DC5A /* UserAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@
 
 #import "Preference.h"
 #import "PreferencesViewController.h"
+#import "LocalizationViewController.h"
 
 @interface RankingViewController ()
 
@@ -137,6 +138,11 @@
 - (IBAction)configureAccount:(id)sender {
     PreferencesViewController *preferences = [[PreferencesViewController alloc] init];
     [self presentModalViewController:preferences animated:YES];
+}
+
+- (IBAction)viewMap:(id)sender {
+    LocalizationViewController *view = [[LocalizationViewController alloc] init];
+    [self presentModalViewController:view animated:YES];
 }
 
 

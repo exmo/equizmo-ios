@@ -91,7 +91,9 @@
     game = [[Game alloc] init];
     game.category = category;
     
+    [activity startAnimating];
     [game loadQuestions];
+    [activity stopAnimating];
     
     labelCategory.text = category;
     labelNumberOfQuestions.text = [NSString stringWithFormat:@"%d", [game.questions count]];
@@ -207,6 +209,7 @@
 -(void) exibirProximaQuestao{
     currentQuestionIndex++;
     if(currentQuestionIndex < [game.questions count]){
+        [activity startAnimating];
         [UIView transitionWithView:viewQuestionsAndPropositions duration:0.8
                            options:UIViewAnimationOptionTransitionCrossDissolve
                         animations:^ { 
@@ -222,6 +225,7 @@
                             
                         }
                         completion:nil];
+        [activity stopAnimating];
         
     }else {
         // Envia para o servidor e exibe o resultado;
@@ -230,6 +234,7 @@
 }
 
 - (void) encerrarJogo{
+    [activity startAnimating];
     int total = [game sendScore];
     User *u = [User sharedInstance];
     u.points = total;
@@ -254,7 +259,7 @@
                         [labelFinalScore setHidden:NO];
                     }
                     completion:nil];
-    
+    [activity stopAnimating];
 }
 
 /* Como estou trabalhando com telas modais, preciso fechar a primeira para que as demais fechem automáticamente

@@ -20,7 +20,7 @@
 @implementation User
 
 
-@synthesize name, email, location, points;
+@synthesize name, email, points, longitude, latitude;
 
 static User *sharedInstance = nil;
 
@@ -54,6 +54,15 @@ static User *sharedInstance = nil;
     [defaults setObject:email forKey:VAR_EMAIL];
     [defaults setObject:name forKey:VAR_NAME];
     [defaults setObject:[NSNumber numberWithDouble:points ] forKey:VAR_POINTS];
+    
+    if(latitude){
+        [defaults setFloat:latitude forKey:VAR_LATITUDE];
+    }
+    
+    if(longitude){
+        [defaults setFloat:longitude forKey:VAR_LONGITUDE];
+    }
+    
     [defaults synchronize];
 }
 
@@ -62,6 +71,8 @@ static User *sharedInstance = nil;
     name = [defaults objectForKey:VAR_NAME];
     email = [defaults objectForKey:VAR_EMAIL];
     points = [[defaults objectForKey:VAR_POINTS] doubleValue];
+    latitude = [[defaults objectForKey:VAR_LATITUDE] floatValue];
+    longitude = [[defaults objectForKey:VAR_LONGITUDE] floatValue];
 }
 
 - (void) login{
@@ -69,8 +80,8 @@ static User *sharedInstance = nil;
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:name forKey:@"name"]; 
     [parameters setObject:email forKey:@"email"]; 
-    [parameters setObject:[NSNumber numberWithDouble:location.coordinate.latitude] forKey:@"latitude"]; 
-    [parameters setObject:[NSNumber numberWithDouble:location.coordinate.longitude] forKey:@"longitude"]; 
+    [parameters setObject:[NSNumber numberWithDouble:latitude] forKey:@"latitude"]; 
+    [parameters setObject:[NSNumber numberWithDouble:longitude] forKey:@"longitude"]; 
     
     SoapConnection *soap = [[SoapConnection alloc]initWithSoapAddress:SOAP_ADDRESS targetNamespace:WSDL_TARGET_NAMESPACE operationName:OPERATION_LOGIN parameters:parameters headers:nil];
     

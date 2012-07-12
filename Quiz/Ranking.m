@@ -25,7 +25,10 @@
         u.email = [userDic objectForKey:@"email"];
         u.name = [userDic objectForKey:@"name"];
         u.points = [[userDic objectForKey:@"points"] doubleValue];
+        u.longitude = [[userDic objectForKey:@"longitude"] floatValue];
+        u.latitude = [[userDic objectForKey:@"latitude"] floatValue];
         [firstsArray addObject:u];
+        NSLog(@"Pontos de %@: %f",u.name,u.points);
     }
     
     return firstsArray;

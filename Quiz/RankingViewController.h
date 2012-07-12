@@ -22,5 +22,6 @@
 - (IBAction)startGame:(id)sender;
 
 - (IBAction)configureAccount:(id)sender;
+- (IBAction)viewMap:(id)sender;
 
 @end

@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
 
 @interface User : NSObject
 
 
 @property(retain, nonatomic) NSString *name;
 @property(retain, nonatomic) NSString *email;
-@property(retain, nonatomic) CLLocation *location;
 @property double points;
+@property float longitude;
+@property float latitude;
 
 -(void) saveAsCurrent;
 -(void) loadCurrent;

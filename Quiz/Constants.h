@@ -12,6 +12,8 @@
 #define VAR_NAME @"user_name"
 #define VAR_EMAIL @"user_email"
 #define VAR_POINTS @"user_points"
+#define VAR_LATITUDE @"VAR_LATITUDE"
+#define VAR_LONGITUDE @"VAR_LONGITUDE"
 
 #define PREFS_SOUND_ENABLED @"PREFS_SOUND_ENABLED"
 #define PREFS_RANKING_SIZE @"PREFS_RANKING_SIZE"

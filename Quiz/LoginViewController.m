@@ -20,6 +20,7 @@
 @synthesize textFieldEmail;
 @synthesize buttonLogin;
 @synthesize user;
+@synthesize activity;
 
 
 #pragma mark ViewController Life Cycle
@@ -39,6 +40,7 @@
     locationManager.delegate = self;
     locationManager.desiredAccuracy = 1.0;
     [locationManager startUpdatingLocation];
+    
 
     // Registra os obeservadores para esta classe.
     [self configureTheListeners];
@@ -50,6 +52,8 @@
     [super viewWillAppear:animated];
     NSLog(@"Tela de login");
     [self setViewEnabled: YES];
+    [locationManager startUpdatingLocation];
+    [buttonLogin setEnabled:NO]; // Wait get the coordinates
 }
 
 
@@ -58,6 +62,7 @@
     [self setTextFieldName:nil];
     [self setTextFieldEmail:nil];
     [self setButtonLogin:nil];
+    [self setActivity:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -74,10 +79,13 @@
 #pragma mark UBActions
 
 - (IBAction)login:(id)sender {
-    [self setViewEnabled:NO];
     user.name = textFieldName.text;
     user.email = textFieldEmail.text;
-    [user login];
+    if([user.name length]>0 && [user.email length] > 0){
+        [self setViewEnabled:NO];
+        [activity startAnimating];
+        [user login];
+    }
 }
 
 #pragma mark Métodos auxiliares
@@ -103,6 +111,7 @@
 }
 
 -(void) userDidLoggedWithError: (NSNotification *) notification{
+    [activity stopAnimating];
     UIAlertView *alert = [[UIAlertView alloc] init];
     alert.title = NSLocalizedString(@"LOGIN_FAILED",nil);;
     [alert addButtonWithTitle:NSLocalizedString(@"OK",nil)];
@@ -112,6 +121,7 @@
 }
 
 - (void) userDidLoggedIn: (NSNotification *) notification{
+    [activity stopAnimating];
     NSLog(@"Usuario logado: %@", [(User *)notification.object email]);
     RankingViewController *ranking = [[RankingViewController alloc] init];
     [buttonLogin setEnabled:YES];
@@ -127,9 +137,10 @@
 - (void)locationManager:(CLLocationManager *)manager
 	didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation{
-    user.location = newLocation;
+    user.longitude= newLocation.coordinate.longitude;
+    user.latitude = newLocation.coordinate.latitude;
     [locationManager stopUpdatingLocation];
-    locationManager.delegate = nil;
+    [buttonLogin setEnabled:YES];
 }
 
 

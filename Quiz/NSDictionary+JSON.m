@@ -12,8 +12,15 @@
 
 
 +(NSDictionary*)dictionaryWithContentsOfJSONURLString: (NSString *)urlAddress{
+   
+    UIApplication* app = [UIApplication sharedApplication];
+    app.networkActivityIndicatorVisible = YES;
+    
     NSData* data = [NSData dataWithContentsOfURL:
                     [NSURL URLWithString: urlAddress] ];
+    
+    app.networkActivityIndicatorVisible = NO;
+    
     __autoreleasing NSError* error = nil;
     id result = [NSJSONSerialization JSONObjectWithData:data
                                                 options:kNilOptions error:&error];    

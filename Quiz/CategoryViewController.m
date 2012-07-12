@@ -49,11 +49,12 @@
 }
 
 - (void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [activity startAnimating];
     GameViewController *jogo = [[GameViewController alloc] init];
     jogo.category = [categoryList objectAtIndex:indexPath.row];
     jogo.mainModal = self;
     [self presentModalViewController:jogo animated:YES];
+    [activity stopAnimating];
 }
 
 
@@ -80,11 +81,11 @@
     viewCategory.layer.borderWidth = 3.0f;
     viewCategory.layer.borderColor = [UIColor orangeColor].CGColor; 
     
-    
-    
     categoryList = [NSArray arrayWithObjects: nil];
-    [[[Category alloc]init] loadCategoriesWithCallback:@selector(reloadCategoryDataSource:) forInstance:self];
+    
     [activity startAnimating];
+    
+    [[[Category alloc]init] loadCategoriesWithCallback:@selector(reloadCategoryDataSource:) forInstance:self];
 }
 
 - (void) reloadCategoryDataSource: (NSArray *) categories{

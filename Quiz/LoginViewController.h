@@ -13,6 +13,7 @@
 @interface LoginViewController : UIViewController<UITextFieldDelegate, CLLocationManagerDelegate>
 
 @property User *user;
+@property (unsafe_unretained, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 
 @property (retain, nonatomic) IBOutlet UITextField *textFieldName;
 @property (retain, nonatomic) IBOutlet UITextField *textFieldEmail;
