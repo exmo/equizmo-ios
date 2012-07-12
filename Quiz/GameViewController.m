@@ -50,8 +50,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        preference = [[Preference alloc] init ];
-        [preference load];
+        preference = [Preference load];
     }
     return self;
 }
@@ -101,7 +100,7 @@
 
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [preference load];
+    preference = [Preference load];
     [self exibirProximaQuestao];
 }
 
@@ -177,6 +176,7 @@
                                                                 numberStyle:NSNumberFormatterDecimalStyle];
         
          UITableViewCell *cell=[_tableView cellForRowAtIndexPath:indexPath];
+        preference = [Preference load];
         if([q isItRight]){
             cell.textLabel.highlightedTextColor = [UIColor greenColor];
             [playerErrado stop];
@@ -189,7 +189,12 @@
                 [playerErrado play];
         }
         
-        [self performSelector:@selector(exibirProximaQuestao) withObject:nil afterDelay:1.5];
+        double delay = 0.5;
+        
+        if(preference.isSoundEnabled)
+            delay = 1.5;
+        
+        [self performSelector:@selector(exibirProximaQuestao) withObject:nil afterDelay:delay];
         
     }
     

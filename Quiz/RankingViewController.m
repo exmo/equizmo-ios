@@ -12,6 +12,7 @@
 #import "CategoryViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "Preference.h"
 #import "PreferencesViewController.h"
 
 @interface RankingViewController ()
@@ -102,8 +103,8 @@
     labelPoints.text = [NSNumberFormatter localizedStringFromNumber:score
                                                         numberStyle:NSNumberFormatterDecimalStyle];
     
-    
-    users = [Ranking firsts:5];
+    Preference *prefs = [Preference load];
+    users = [Ranking firsts:prefs.rankingSize];
     [table reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 

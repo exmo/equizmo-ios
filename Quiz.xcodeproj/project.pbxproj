@@ -71,6 +71,10 @@
 		39D99D1115AE0B690097DC5A /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D0F15AE0B680097DC5A /* PreferencesViewController.xib */; };
 		39D99D1315AE0D7A0097DC5A /* prefes.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D1215AE0D7A0097DC5A /* prefes.png */; };
 		39D99D1615AE13BA0097DC5A /* Preference.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D1515AE13BA0097DC5A /* Preference.m */; };
+		39D99D1A15AEF9BD0097DC5A /* PreferencesSwichtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D1915AEF9BD0097DC5A /* PreferencesSwichtCell.m */; };
+		39D99D1E15AEFA110097DC5A /* PreferencesSwichtCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D1D15AEFA110097DC5A /* PreferencesSwichtCell.xib */; };
+		39D99D2115AF04A70097DC5A /* PreferencesStepperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D2015AF04A70097DC5A /* PreferencesStepperCell.m */; };
+		39D99D2315AF04C30097DC5A /* PreferencesStepperCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D2215AF04C30097DC5A /* PreferencesStepperCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +157,12 @@
 		39D99D1215AE0D7A0097DC5A /* prefes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prefes.png; sourceTree = "<group>"; };
 		39D99D1415AE13BA0097DC5A /* Preference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preference.h; sourceTree = "<group>"; };
 		39D99D1515AE13BA0097DC5A /* Preference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preference.m; sourceTree = "<group>"; };
+		39D99D1815AEF9BD0097DC5A /* PreferencesSwichtCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesSwichtCell.h; sourceTree = "<group>"; };
+		39D99D1915AEF9BD0097DC5A /* PreferencesSwichtCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesSwichtCell.m; sourceTree = "<group>"; };
+		39D99D1D15AEFA110097DC5A /* PreferencesSwichtCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesSwichtCell.xib; sourceTree = "<group>"; };
+		39D99D1F15AF04A70097DC5A /* PreferencesStepperCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesStepperCell.h; sourceTree = "<group>"; };
+		39D99D2015AF04A70097DC5A /* PreferencesStepperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesStepperCell.m; sourceTree = "<group>"; };
+		39D99D2215AF04C30097DC5A /* PreferencesStepperCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesStepperCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +350,7 @@
 		39D99CF415AB46E70097DC5A /* component */ = {
 			isa = PBXGroup;
 			children = (
+				39D99D1715AEF8BE0097DC5A /* Preferences */,
 				39D99D0515ADAE9D0097DC5A /* Animation */,
 				39D99CFE15AB4E8E0097DC5A /* Locallized */,
 			);
@@ -366,6 +377,19 @@
 				39D99D0715ADAED40097DC5A /* SnowView.m */,
 			);
 			name = Animation;
+			sourceTree = "<group>";
+		};
+		39D99D1715AEF8BE0097DC5A /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				39D99D1815AEF9BD0097DC5A /* PreferencesSwichtCell.h */,
+				39D99D1915AEF9BD0097DC5A /* PreferencesSwichtCell.m */,
+				39D99D1D15AEFA110097DC5A /* PreferencesSwichtCell.xib */,
+				39D99D1F15AF04A70097DC5A /* PreferencesStepperCell.h */,
+				39D99D2015AF04A70097DC5A /* PreferencesStepperCell.m */,
+				39D99D2215AF04C30097DC5A /* PreferencesStepperCell.xib */,
+			);
+			name = Preferences;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,6 +481,8 @@
 				39D99D0C15ADC6840097DC5A /* snow.png in Resources */,
 				39D99D1115AE0B690097DC5A /* PreferencesViewController.xib in Resources */,
 				39D99D1315AE0D7A0097DC5A /* prefes.png in Resources */,
+				39D99D1E15AEFA110097DC5A /* PreferencesSwichtCell.xib in Resources */,
+				39D99D2315AF04C30097DC5A /* PreferencesStepperCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +513,8 @@
 				39D99D0815ADAED40097DC5A /* SnowView.m in Sources */,
 				39D99D1015AE0B690097DC5A /* PreferencesViewController.m in Sources */,
 				39D99D1615AE13BA0097DC5A /* Preference.m in Sources */,
+				39D99D1A15AEF9BD0097DC5A /* PreferencesSwichtCell.m in Sources */,
+				39D99D2115AF04A70097DC5A /* PreferencesStepperCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

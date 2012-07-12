@@ -8,12 +8,19 @@
 
 #import "PreferencesViewController.h"
 #import "Preference.h"
+#import "PreferencesSwichtCell.h"
+#import "PreferencesStepperCell.h"
+
+#define INDEX_SOUND_ENABLED 0
+#define INDEX_RANKING 1
 
 @interface PreferencesViewController (){
     Preference *preference;
 }
 
 @property Preference *preference;
+@property PreferencesSwichtCell *isSoundEnabledCell;
+@property PreferencesStepperCell *rankingCell;
 
 @end
 
@@ -21,12 +28,13 @@
 
 @synthesize preference;
 
+@synthesize isSoundEnabledCell, rankingCell;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        preference = [[Preference alloc] init];
-        [preference load];
+        preference = [Preference load];
     }
     return self;
 }
@@ -35,6 +43,20 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PreferencesSwichtCell" owner:self options:NULL];
+    isSoundEnabledCell = (PreferencesSwichtCell *) [nib objectAtIndex:0];
+    isSoundEnabledCell.label.text = @"Sound enabled";
+    [isSoundEnabledCell.switcher setOn:preference.isSoundEnabled];
+    [isSoundEnabledCell.switcher addTarget:self action:@selector(preferencesDidChange:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    nib = [[NSBundle mainBundle] loadNibNamed:@"PreferencesStepperCell" owner:self options:NULL];
+    rankingCell = (PreferencesStepperCell *) [nib objectAtIndex:0];
+    rankingCell.label.text = @"Size of ranking";
+    rankingCell.stepper.value = preference.rankingSize;
+    rankingCell.value.text = [NSString stringWithFormat:@"%.f", rankingCell.stepper.value];
+    
 }
 
 - (void)viewDidUnload
@@ -53,7 +75,7 @@
 //@required
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -66,12 +88,12 @@
     }
     
 
-    if(indexPath.row==0){
-        UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
-        [switchView setOn:preference.isSoundEnabled animated:NO];
-        [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
-        cell.accessoryView = switchView;
-        cell.textLabel.text = @"Sound enabled";
+    if(indexPath.row==INDEX_SOUND_ENABLED){
+        cell = isSoundEnabledCell;
+    }
+    
+    if(indexPath.row==INDEX_RANKING){
+        cell = rankingCell;
     }
     
     return cell;
@@ -95,16 +117,21 @@
 #pragma mark IBAction
 
 - (IBAction)closePreferences:(id)sender {
+    [self savePreferences];
     [self dismissModalViewControllerAnimated:YES];
 }
 
 
 #pragma mark Preference events
 
-- (void) switchChanged:(id)sender {
-    UISwitch* switchControl = sender;
-    NSLog( @"The switch is %@", switchControl.on ? @"ON" : @"OFF" );
-    preference.isSoundEnabled = switchControl.on;
-    [preference save];
+- (void) preferencesDidChange:(id)sender {
+    [self savePreferences];
 }
+
+- (void) savePreferences{
+    preference.isSoundEnabled = isSoundEnabledCell.switcher.on;
+    preference.rankingSize = [rankingCell.value.text intValue];
+    [preference save];   
+}
+
 @end

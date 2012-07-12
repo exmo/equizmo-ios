@@ -11,9 +11,10 @@
 @interface Preference : NSObject
 
 @property(nonatomic) BOOL isSoundEnabled;
+@property int rankingSize;
 
 - (void) save;
 
-- (void) load;
++ (Preference *) load;
 
 @end
