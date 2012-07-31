@@ -43,6 +43,11 @@
 		3956536D1590DB3500513FE3 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3956536B1590DB3500513FE3 /* GameViewController.xib */; };
 		395653741590E23500513FE3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 395653731590E23500513FE3 /* Game.m */; };
 		395653771590E30200513FE3 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 395653761590E30200513FE3 /* Question.m */; };
+		396FD9D415C80BF7005E03BD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 396FD9D315C80BF7005E03BD /* SenTestingKit.framework */; };
+		396FD9D515C80BF7005E03BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531A159098FA00513FE3 /* UIKit.framework */; };
+		396FD9D615C80BF7005E03BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531C159098FA00513FE3 /* Foundation.framework */; };
+		396FD9DC15C80BF8005E03BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 396FD9DA15C80BF8005E03BD /* InfoPlist.strings */; };
+		396FD9EB15C8152C005E03BD /* UserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 396FD9EA15C8152C005E03BD /* UserTest.m */; };
 		39BC91C9159C98B900DD669E /* botao_entrar.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91C7159C98B800DD669E /* botao_entrar.png */; };
 		39BC91CA159C98B900DD669E /* botao_jogar.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91C8159C98B800DD669E /* botao_jogar.png */; };
 		39BC91CC159C98E800DD669E /* imagem_face_lateral_esquerda.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91CB159C98E800DD669E /* imagem_face_lateral_esquerda.png */; };
@@ -82,6 +87,16 @@
 		39D99D3515AF41DE0097DC5A /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D3415AF41DE0097DC5A /* UserAnnotation.m */; };
 		39D99D3B15AF53BF0097DC5A /* snowman.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D3A15AF53BF0097DC5A /* snowman.png */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		396FD9E515C80C39005E03BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3956530D159098FA00513FE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 39565315159098FA00513FE3;
+			remoteInfo = Quiz;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3910E9E415A4699000FF54A9 /* NSDictionary+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSON.h"; sourceTree = "<group>"; };
@@ -124,6 +139,13 @@
 		395653731590E23500513FE3 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		395653751590E30200513FE3 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		395653761590E30200513FE3 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		396FD9D215C80BF7005E03BD /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		396FD9D315C80BF7005E03BD /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		396FD9D915C80BF7005E03BD /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
+		396FD9DB15C80BF8005E03BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		396FD9E015C80BF8005E03BD /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		396FD9E915C8152C005E03BD /* UserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTest.h; sourceTree = "<group>"; };
+		396FD9EA15C8152C005E03BD /* UserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTest.m; sourceTree = "<group>"; };
 		39BC91C7159C98B800DD669E /* botao_entrar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = botao_entrar.png; sourceTree = "<group>"; };
 		39BC91C8159C98B800DD669E /* botao_jogar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = botao_jogar.png; sourceTree = "<group>"; };
 		39BC91CB159C98E800DD669E /* imagem_face_lateral_esquerda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagem_face_lateral_esquerda.png; sourceTree = "<group>"; };
@@ -194,6 +216,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		396FD9CE15C80BF7005E03BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				396FD9D415C80BF7005E03BD /* SenTestingKit.framework in Frameworks */,
+				396FD9D515C80BF7005E03BD /* UIKit.framework in Frameworks */,
+				396FD9D615C80BF7005E03BD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -201,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				39565320159098FA00513FE3 /* Quiz */,
+				396FD9D715C80BF7005E03BD /* UnitTests */,
 				39565319159098FA00513FE3 /* Frameworks */,
 				39565317159098FA00513FE3 /* Products */,
 			);
@@ -210,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				39565316159098FA00513FE3 /* Quiz.app */,
+				396FD9D215C80BF7005E03BD /* UnitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -224,6 +258,7 @@
 				3956531A159098FA00513FE3 /* UIKit.framework */,
 				3956531C159098FA00513FE3 /* Foundation.framework */,
 				3956531E159098FA00513FE3 /* CoreGraphics.framework */,
+				396FD9D315C80BF7005E03BD /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -345,6 +380,42 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		396FD9D715C80BF7005E03BD /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				396FD9E715C814FD005E03BD /* Classes */,
+				396FD9D815C80BF7005E03BD /* Supporting Files */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		396FD9D815C80BF7005E03BD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				396FD9D915C80BF7005E03BD /* UnitTests-Info.plist */,
+				396FD9DA15C80BF8005E03BD /* InfoPlist.strings */,
+				396FD9E015C80BF8005E03BD /* UnitTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		396FD9E715C814FD005E03BD /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				396FD9E815C81505005E03BD /* model */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		396FD9E815C81505005E03BD /* model */ = {
+			isa = PBXGroup;
+			children = (
+				396FD9E915C8152C005E03BD /* UserTest.h */,
+				396FD9EA15C8152C005E03BD /* UserTest.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		39BC91C31593A5FD00DD669E /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,6 +513,25 @@
 			productReference = 39565316159098FA00513FE3 /* Quiz.app */;
 			productType = "com.apple.product-type.application";
 		};
+		396FD9D115C80BF7005E03BD /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 396FD9E315C80BF8005E03BD /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				396FD9CD15C80BF7005E03BD /* Sources */,
+				396FD9CE15C80BF7005E03BD /* Frameworks */,
+				396FD9CF15C80BF7005E03BD /* Resources */,
+				396FD9D015C80BF7005E03BD /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				396FD9E615C80C39005E03BD /* PBXTargetDependency */,
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = 396FD9D215C80BF7005E03BD /* UnitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -465,6 +555,7 @@
 			projectRoot = "";
 			targets = (
 				39565315159098FA00513FE3 /* Quiz */,
+				396FD9D115C80BF7005E03BD /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -520,7 +611,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		396FD9CF15C80BF7005E03BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				396FD9DC15C80BF8005E03BD /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		396FD9D015C80BF7005E03BD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		39565312159098FA00513FE3 /* Sources */ = {
@@ -554,7 +669,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		396FD9CD15C80BF7005E03BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				396FD9EB15C8152C005E03BD /* UserTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		396FD9E615C80C39005E03BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 39565315159098FA00513FE3 /* Quiz */;
+			targetProxy = 396FD9E515C80C39005E03BD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		391EC52615A73616000DE287 /* Localizable.strings */ = {
@@ -571,6 +702,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				391EC52715A73622000DE287 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		396FD9DA15C80BF8005E03BD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				396FD9DB15C80BF8005E03BD /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -630,6 +769,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Quiz/Quiz-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "Quiz/Quiz-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -642,10 +782,47 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Quiz/Quiz-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "Quiz/Quiz-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		396FD9E115C80BF8005E03BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Quiz.app/Quiz";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
+				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		396FD9E215C80BF8005E03BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Quiz.app/Quiz";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
+				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -669,6 +846,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		396FD9E315C80BF8005E03BD /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				396FD9E115C80BF8005E03BD /* Debug */,
+				396FD9E215C80BF8005E03BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
