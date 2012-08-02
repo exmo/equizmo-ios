@@ -11,13 +11,18 @@
 @implementation NSDictionary (JSON)
 
 
++ (NSData *)dataWithContentsOfURLAddress:(NSString *)urlAddress {
+    NSData* data = [NSData dataWithContentsOfURL:
+                    [NSURL URLWithString: urlAddress] ];
+    return data;
+}
+
 +(NSDictionary*)dictionaryWithContentsOfJSONURLString: (NSString *)urlAddress{
    
     UIApplication* app = [UIApplication sharedApplication];
     app.networkActivityIndicatorVisible = YES;
     
-    NSData* data = [NSData dataWithContentsOfURL:
-                    [NSURL URLWithString: urlAddress] ];
+    NSData *data = [self dataWithContentsOfURLAddress:urlAddress];
     
     app.networkActivityIndicatorVisible = NO;
     

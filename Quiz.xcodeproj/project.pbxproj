@@ -48,6 +48,7 @@
 		396FD9D615C80BF7005E03BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531C159098FA00513FE3 /* Foundation.framework */; };
 		396FD9DC15C80BF8005E03BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 396FD9DA15C80BF8005E03BD /* InfoPlist.strings */; };
 		396FD9EB15C8152C005E03BD /* UserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 396FD9EA15C8152C005E03BD /* UserTest.m */; };
+		396FDA0715C85B1F005E03BD /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 396FD9FF15C85B1F005E03BD /* libOCMock.a */; };
 		39BC91C9159C98B900DD669E /* botao_entrar.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91C7159C98B800DD669E /* botao_entrar.png */; };
 		39BC91CA159C98B900DD669E /* botao_jogar.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91C8159C98B800DD669E /* botao_jogar.png */; };
 		39BC91CC159C98E800DD669E /* imagem_face_lateral_esquerda.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91CB159C98E800DD669E /* imagem_face_lateral_esquerda.png */; };
@@ -146,6 +147,13 @@
 		396FD9E015C80BF8005E03BD /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		396FD9E915C8152C005E03BD /* UserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTest.h; sourceTree = "<group>"; };
 		396FD9EA15C8152C005E03BD /* UserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTest.m; sourceTree = "<group>"; };
+		396FD9FF15C85B1F005E03BD /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		396FDA0115C85B1F005E03BD /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
+		396FDA0215C85B1F005E03BD /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
+		396FDA0315C85B1F005E03BD /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
+		396FDA0415C85B1F005E03BD /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
+		396FDA0515C85B1F005E03BD /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
+		396FDA0615C85B1F005E03BD /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		39BC91C7159C98B800DD669E /* botao_entrar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = botao_entrar.png; sourceTree = "<group>"; };
 		39BC91C8159C98B800DD669E /* botao_jogar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = botao_jogar.png; sourceTree = "<group>"; };
 		39BC91CB159C98E800DD669E /* imagem_face_lateral_esquerda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagem_face_lateral_esquerda.png; sourceTree = "<group>"; };
@@ -223,6 +231,7 @@
 				396FD9D415C80BF7005E03BD /* SenTestingKit.framework in Frameworks */,
 				396FD9D515C80BF7005E03BD /* UIKit.framework in Frameworks */,
 				396FD9D615C80BF7005E03BD /* Foundation.framework in Frameworks */,
+				396FDA0715C85B1F005E03BD /* libOCMock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +245,7 @@
 				396FD9D715C80BF7005E03BD /* UnitTests */,
 				39565319159098FA00513FE3 /* Frameworks */,
 				39565317159098FA00513FE3 /* Products */,
+				396FD9FD15C85B1F005E03BD /* include */,
 			);
 			sourceTree = "<group>";
 		};
@@ -414,6 +424,36 @@
 				396FD9EA15C8152C005E03BD /* UserTest.m */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		396FD9FD15C85B1F005E03BD /* include */ = {
+			isa = PBXGroup;
+			children = (
+				396FD9FE15C85B1F005E03BD /* lib */,
+				396FDA0015C85B1F005E03BD /* OCMock */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		396FD9FE15C85B1F005E03BD /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				396FD9FF15C85B1F005E03BD /* libOCMock.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		396FDA0015C85B1F005E03BD /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				396FDA0115C85B1F005E03BD /* NSNotificationCenter+OCMAdditions.h */,
+				396FDA0215C85B1F005E03BD /* OCMArg.h */,
+				396FDA0315C85B1F005E03BD /* OCMConstraint.h */,
+				396FDA0415C85B1F005E03BD /* OCMock.h */,
+				396FDA0515C85B1F005E03BD /* OCMockObject.h */,
+				396FDA0615C85B1F005E03BD /* OCMockRecorder.h */,
+			);
+			path = OCMock;
 			sourceTree = "<group>";
 		};
 		39BC91C31593A5FD00DD669E /* util */ = {
@@ -800,10 +840,22 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/include";
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/UnitTests\"",
+					"\"$(SRCROOT)/include/lib\"",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"\"$(SRCROOT)/include/lib/libOCMock.a\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -818,10 +870,22 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/include";
 				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/UnitTests\"",
+					"\"$(SRCROOT)/include/lib\"",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"\"$(SRCROOT)/include/lib/libOCMock.a\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

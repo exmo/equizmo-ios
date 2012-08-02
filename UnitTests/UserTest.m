@@ -8,6 +8,7 @@
 
 #import "UserTest.h"
 #import "User.h"
+#import "Constants.h"
 
 @implementation UserTest
 
@@ -45,5 +46,43 @@
     STAssertEquals(longitude, current.longitude,@"Longitude is not equal");
 }
 
+- (void)testIfSharedInstanceReturnsAllwaysTheSameUser{
+    
+    User *user1 = [User sharedInstance];
+    User *user2 = [User sharedInstance];
+    User *user3 = [User sharedInstance];
+    
+    STAssertNotNil(user1,@"No user sharedInstance ");
+    STAssertNotNil(user2,@"No user sharedInstance ");
+    STAssertNotNil(user3,@"No user sharedInstance ");
+    
+    STAssertEquals(user1, user2,@"Not the same user.");
+    STAssertEquals(user1, user3,@"Not the same user.");
+}
+
+/**
+ Now we need to mock the SoapConnection that is used by our target test method.
+ */
+- (void) testloginOK{
+    
+    User *user = [[User alloc]init];
+    user.name = @"User name";
+    user.email = @"user@email.com";
+    user.longitude = 2.2;
+    user.latitude = 1.1;
+
+    /* Mock the notification */
+    id mock = [OCMockObject observerMock];
+    [[NSNotificationCenter defaultCenter] addMockObserver:mock name:EVENT_LOGIN_OK object:nil];
+    [[mock expect] notificationWithName:EVENT_LOGIN_OK object:[OCMArg any] userInfo:[OCMArg any]];
+    // Mock Notification prepared
+    
+    [user login];
+    
+
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:mock];
+    [mock verify];
+}
 
 @end
