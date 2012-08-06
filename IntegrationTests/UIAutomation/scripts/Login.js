@@ -7,7 +7,7 @@ var app = target.frontMostApp();
 var name = "Robgol Miserê da Bahia";
 var email = "robgol@misere.com";
 
-test("Sign-In Screen", function(target, app) {
+test("Login", function(target, app) {
   	UIALogger.logMessage("Setting name");
 	var nameTextField = app.mainWindow().textFields()[0];
 	assertNotNull(nameTextField, "Couldnt find user name textField"); 
@@ -34,7 +34,7 @@ test("Sign-In Screen", function(target, app) {
 	
 });
 
-test("Sign-Out Screen", function(target, app) {
+test("Logout", function(target, app) {
 	assertNotNull(app.mainWindow().buttons()["logout"], "Couldnt find logout button");
   	app.mainWindow().buttons()["logout"].tap();
 	 
@@ -44,7 +44,13 @@ test("Sign-Out Screen", function(target, app) {
 });
 
 
-
+UIATarget.onAlert = function onAlert(alert) {
+	if (alert.buttons()["Ok"]) {
+		alert.buttons()["Ok"].tap();
+		return  true;   	
+	}
+	return  false; 
+}
 
 
 
