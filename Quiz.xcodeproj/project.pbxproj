@@ -49,6 +49,84 @@
 		396FD9DC15C80BF8005E03BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 396FD9DA15C80BF8005E03BD /* InfoPlist.strings */; };
 		396FD9EB15C8152C005E03BD /* UserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 396FD9EA15C8152C005E03BD /* UserTest.m */; };
 		396FDA0715C85B1F005E03BD /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 396FD9FF15C85B1F005E03BD /* libOCMock.a */; };
+		396FDA2D15D044A7005E03BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39565326159098FA00513FE3 /* main.m */; };
+		396FDA2E15D044A7005E03BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3956532A159098FA00513FE3 /* AppDelegate.m */; };
+		396FDA2F15D044A7005E03BD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3956532D159098FA00513FE3 /* LoginViewController.m */; };
+		396FDA3015D044A7005E03BD /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3956534F1590AD2200513FE3 /* User.m */; };
+		396FDA3115D044A7005E03BD /* RankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3956535B1590B9AF00513FE3 /* RankingViewController.m */; };
+		396FDA3215D044A7005E03BD /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 395653651590C24900513FE3 /* CategoryViewController.m */; };
+		396FDA3315D044A7005E03BD /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3956536A1590DB3500513FE3 /* GameViewController.m */; };
+		396FDA3415D044A7005E03BD /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 395653731590E23500513FE3 /* Game.m */; };
+		396FDA3515D044A7005E03BD /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 395653761590E30200513FE3 /* Question.m */; };
+		396FDA3615D044A7005E03BD /* SoapConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BC91FC159DC5FF00DD669E /* SoapConnection.m */; };
+		396FDA3715D044A7005E03BD /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BC9204159E206C00DD669E /* Category.m */; };
+		396FDA3815D044A7005E03BD /* NSDictionary+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3910E9E515A4699000FF54A9 /* NSDictionary+JSON.m */; };
+		396FDA3915D044A7005E03BD /* Ranking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3910E9E815A47B1C00FF54A9 /* Ranking.m */; };
+		396FDA3A15D044A7005E03BD /* LabelFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 3910E9EB15A4B46B00FF54A9 /* LabelFormater.m */; };
+		396FDA3B15D044A7005E03BD /* LocalizedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99CF615AB47650097DC5A /* LocalizedButton.m */; };
+		396FDA3C15D044A7005E03BD /* LocalizedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99CF915AB494C0097DC5A /* LocalizedTextField.m */; };
+		396FDA3D15D044A7005E03BD /* LocalizedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99CFC15AB4E5B0097DC5A /* LocalizedLabel.m */; };
+		396FDA3E15D044A7005E03BD /* SnowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D0715ADAED40097DC5A /* SnowView.m */; };
+		396FDA3F15D044A7005E03BD /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D0E15AE0B660097DC5A /* PreferencesViewController.m */; };
+		396FDA4015D044A7005E03BD /* Preference.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D1515AE13BA0097DC5A /* Preference.m */; };
+		396FDA4115D044A7005E03BD /* PreferencesSwichtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D1915AEF9BD0097DC5A /* PreferencesSwichtCell.m */; };
+		396FDA4215D044A7005E03BD /* PreferencesStepperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D2015AF04A70097DC5A /* PreferencesStepperCell.m */; };
+		396FDA4315D044A7005E03BD /* LocalizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D2E15AF341C0097DC5A /* LocalizationViewController.m */; };
+		396FDA4415D044A7005E03BD /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D99D3415AF41DE0097DC5A /* UserAnnotation.m */; };
+		396FDA4615D044A7005E03BD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D99D0915ADB4630097DC5A /* QuartzCore.framework */; };
+		396FDA4715D044A7005E03BD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39BC91E6159CC68700DD669E /* AVFoundation.framework */; };
+		396FDA4815D044A7005E03BD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395653531590ADEA00513FE3 /* MapKit.framework */; };
+		396FDA4915D044A7005E03BD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 395653511590ADE300513FE3 /* CoreLocation.framework */; };
+		396FDA4A15D044A7005E03BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531A159098FA00513FE3 /* UIKit.framework */; };
+		396FDA4B15D044A7005E03BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531C159098FA00513FE3 /* Foundation.framework */; };
+		396FDA4C15D044A7005E03BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3956531E159098FA00513FE3 /* CoreGraphics.framework */; };
+		396FDA4E15D044A7005E03BD /* User.h in Resources */ = {isa = PBXBuildFile; fileRef = 3956534E1590AD2200513FE3 /* User.h */; };
+		396FDA4F15D044A7005E03BD /* User.m in Resources */ = {isa = PBXBuildFile; fileRef = 3956534F1590AD2200513FE3 /* User.m */; };
+		396FDA5015D044A7005E03BD /* Game.h in Resources */ = {isa = PBXBuildFile; fileRef = 395653721590E23500513FE3 /* Game.h */; };
+		396FDA5115D044A7005E03BD /* Game.m in Resources */ = {isa = PBXBuildFile; fileRef = 395653731590E23500513FE3 /* Game.m */; };
+		396FDA5215D044A7005E03BD /* Question.h in Resources */ = {isa = PBXBuildFile; fileRef = 395653751590E30200513FE3 /* Question.h */; };
+		396FDA5315D044A7005E03BD /* Question.m in Resources */ = {isa = PBXBuildFile; fileRef = 395653761590E30200513FE3 /* Question.m */; };
+		396FDA5415D044A7005E03BD /* Category.h in Resources */ = {isa = PBXBuildFile; fileRef = 39BC9203159E206C00DD669E /* Category.h */; };
+		396FDA5515D044A7005E03BD /* Category.m in Resources */ = {isa = PBXBuildFile; fileRef = 39BC9204159E206C00DD669E /* Category.m */; };
+		396FDA5615D044A7005E03BD /* Ranking.h in Resources */ = {isa = PBXBuildFile; fileRef = 3910E9E715A47B1C00FF54A9 /* Ranking.h */; };
+		396FDA5715D044A7005E03BD /* Ranking.m in Resources */ = {isa = PBXBuildFile; fileRef = 3910E9E815A47B1C00FF54A9 /* Ranking.m */; };
+		396FDA5815D044A7005E03BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39565323159098FA00513FE3 /* InfoPlist.strings */; };
+		396FDA5915D044A7005E03BD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3956533A1590991200513FE3 /* Default@2x.png */; };
+		396FDA5A15D044A7005E03BD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3956533C1590991600513FE3 /* Default.png */; };
+		396FDA5B15D044A7005E03BD /* RankingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3956535C1590B9B000513FE3 /* RankingViewController.xib */; };
+		396FDA5C15D044A7005E03BD /* CategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 395653661590C24900513FE3 /* CategoryViewController.xib */; };
+		396FDA5D15D044A7005E03BD /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3956536B1590DB3500513FE3 /* GameViewController.xib */; };
+		396FDA5E15D044A7005E03BD /* botao_entrar.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91C7159C98B800DD669E /* botao_entrar.png */; };
+		396FDA5F15D044A7005E03BD /* botao_jogar.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91C8159C98B800DD669E /* botao_jogar.png */; };
+		396FDA6015D044A7005E03BD /* imagem_face_lateral_esquerda.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91CB159C98E800DD669E /* imagem_face_lateral_esquerda.png */; };
+		396FDA6115D044A7005E03BD /* login_desenvolvido_por.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91CD159C990D00DD669E /* login_desenvolvido_por.png */; };
+		396FDA6215D044A7005E03BD /* login_informe.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91CE159C990D00DD669E /* login_informe.png */; };
+		396FDA6315D044A7005E03BD /* logo_inicial.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91CF159C990D00DD669E /* logo_inicial.png */; };
+		396FDA6415D044A7005E03BD /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91D3159C991E00DD669E /* background.png */; };
+		396FDA6515D044A7005E03BD /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91D4159C991E00DD669E /* background@2x.png */; };
+		396FDA6615D044A7005E03BD /* ic_ranking.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91DB159CB6A900DD669E /* ic_ranking.png */; };
+		396FDA6715D044A7005E03BD /* fail.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91DE159CC50D00DD669E /* fail.mp3 */; };
+		396FDA6815D044A7005E03BD /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91DF159CC50D00DD669E /* success.mp3 */; };
+		396FDA6915D044A7005E03BD /* carinha.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91E8159CE6AC00DD669E /* carinha.png */; };
+		396FDA6A15D044A7005E03BD /* penguim.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91EA159CEB4F00DD669E /* penguim.png */; };
+		396FDA6B15D044A7005E03BD /* sid.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91EC159CEC4F00DD669E /* sid.png */; };
+		396FDA6C15D044A7005E03BD /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 391EC51615A5FC93000DE287 /* logout.png */; };
+		396FDA6D15D044A7005E03BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 391EC52615A73616000DE287 /* Localizable.strings */; };
+		396FDA6E15D044A7005E03BD /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 391EC53C15A76F29000DE287 /* LoginViewController.xib */; };
+		396FDA6F15D044A7005E03BD /* button_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D99CF215AB45180097DC5A /* button_background.png */; };
+		396FDA7015D044A7005E03BD /* snow.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D0B15ADC6840097DC5A /* snow.png */; };
+		396FDA7115D044A7005E03BD /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D0F15AE0B680097DC5A /* PreferencesViewController.xib */; };
+		396FDA7215D044A7005E03BD /* prefes.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D1215AE0D7A0097DC5A /* prefes.png */; };
+		396FDA7315D044A7005E03BD /* PreferencesSwichtCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D1D15AEFA110097DC5A /* PreferencesSwichtCell.xib */; };
+		396FDA7415D044A7005E03BD /* PreferencesStepperCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D2215AF04C30097DC5A /* PreferencesStepperCell.xib */; };
+		396FDA7515D044A7005E03BD /* configuration.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D2915AF31380097DC5A /* configuration.png */; };
+		396FDA7615D044A7005E03BD /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D2B15AF327A0097DC5A /* map.png */; };
+		396FDA7715D044A7005E03BD /* LocalizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D2F15AF341D0097DC5A /* LocalizationViewController.xib */; };
+		396FDA7815D044A7005E03BD /* snowman.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D99D3A15AF53BF0097DC5A /* snowman.png */; };
+		396FDA8015D04508005E03BD /* libKIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 396FDA7F15D04508005E03BD /* libKIF.a */; };
+		396FDA9C15D04BF8005E03BD /* QuizTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396FDA9715D04BF8005E03BD /* QuizTestController.m */; };
+		396FDA9D15D04BF8005E03BD /* KIFTestScenario+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 396FDA9915D04BF8005E03BD /* KIFTestScenario+Login.m */; };
+		396FDA9E15D04BF8005E03BD /* KIFTestStep+Quiz.m in Sources */ = {isa = PBXBuildFile; fileRef = 396FDA9B15D04BF8005E03BD /* KIFTestStep+Quiz.m */; };
 		39BC91C9159C98B900DD669E /* botao_entrar.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91C7159C98B800DD669E /* botao_entrar.png */; };
 		39BC91CA159C98B900DD669E /* botao_jogar.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91C8159C98B800DD669E /* botao_jogar.png */; };
 		39BC91CC159C98E800DD669E /* imagem_face_lateral_esquerda.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BC91CB159C98E800DD669E /* imagem_face_lateral_esquerda.png */; };
@@ -154,6 +232,17 @@
 		396FDA0415C85B1F005E03BD /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
 		396FDA0515C85B1F005E03BD /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
 		396FDA0615C85B1F005E03BD /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
+		396FDA1015D043C0005E03BD /* KIF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KIF.xcodeproj; path = ../IntegrationTests/Kif/KIF.xcodeproj; sourceTree = "<group>"; };
+		396FDA2A15D0445E005E03BD /* UnitTests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "UnitTests copy-Info.plist"; path = "/Users/robsonximenes/Documents/desenvolvimento/ios/equizmo-ios/UnitTests copy-Info.plist"; sourceTree = "<absolute>"; };
+		396FDA7C15D044A7005E03BD /* Quiz Integration Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz Integration Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		396FDA7E15D044A8005E03BD /* Quiz copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Quiz copy-Info.plist"; path = "/Users/robsonximenes/Documents/desenvolvimento/ios/equizmo-ios/Quiz copy-Info.plist"; sourceTree = "<absolute>"; };
+		396FDA7F15D04508005E03BD /* libKIF.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libKIF.a; path = "IntegrationTests/Kif/build/Release-iphoneos/libKIF.a"; sourceTree = "<group>"; };
+		396FDA9615D04BF8005E03BD /* QuizTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuizTestController.h; path = IntegrationTests/Kif/Classes/QuizTestController.h; sourceTree = "<group>"; };
+		396FDA9715D04BF8005E03BD /* QuizTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuizTestController.m; path = IntegrationTests/Kif/Classes/QuizTestController.m; sourceTree = "<group>"; };
+		396FDA9815D04BF8005E03BD /* KIFTestScenario+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestScenario+Login.h"; path = "IntegrationTests/Kif/Classes/KIFTestScenario+Login.h"; sourceTree = "<group>"; };
+		396FDA9915D04BF8005E03BD /* KIFTestScenario+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestScenario+Login.m"; path = "IntegrationTests/Kif/Classes/KIFTestScenario+Login.m"; sourceTree = "<group>"; };
+		396FDA9A15D04BF8005E03BD /* KIFTestStep+Quiz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KIFTestStep+Quiz.h"; path = "IntegrationTests/Kif/Classes/KIFTestStep+Quiz.h"; sourceTree = "<group>"; };
+		396FDA9B15D04BF8005E03BD /* KIFTestStep+Quiz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KIFTestStep+Quiz.m"; path = "IntegrationTests/Kif/Classes/KIFTestStep+Quiz.m"; sourceTree = "<group>"; };
 		39BC91C7159C98B800DD669E /* botao_entrar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = botao_entrar.png; sourceTree = "<group>"; };
 		39BC91C8159C98B800DD669E /* botao_jogar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = botao_jogar.png; sourceTree = "<group>"; };
 		39BC91CB159C98E800DD669E /* imagem_face_lateral_esquerda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagem_face_lateral_esquerda.png; sourceTree = "<group>"; };
@@ -235,17 +324,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		396FDA4515D044A7005E03BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				396FDA8015D04508005E03BD /* libKIF.a in Frameworks */,
+				396FDA4615D044A7005E03BD /* QuartzCore.framework in Frameworks */,
+				396FDA4715D044A7005E03BD /* AVFoundation.framework in Frameworks */,
+				396FDA4815D044A7005E03BD /* MapKit.framework in Frameworks */,
+				396FDA4915D044A7005E03BD /* CoreLocation.framework in Frameworks */,
+				396FDA4A15D044A7005E03BD /* UIKit.framework in Frameworks */,
+				396FDA4B15D044A7005E03BD /* Foundation.framework in Frameworks */,
+				396FDA4C15D044A7005E03BD /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		3956530B159098FA00513FE3 = {
 			isa = PBXGroup;
 			children = (
+				396FDA7F15D04508005E03BD /* libKIF.a */,
 				39565320159098FA00513FE3 /* Quiz */,
 				396FD9D715C80BF7005E03BD /* UnitTests */,
+				396FDA9515D04BCE005E03BD /* IntegrationTest */,
 				39565319159098FA00513FE3 /* Frameworks */,
 				39565317159098FA00513FE3 /* Products */,
 				396FD9FD15C85B1F005E03BD /* include */,
+				396FDA2A15D0445E005E03BD /* UnitTests copy-Info.plist */,
+				396FDA7E15D044A8005E03BD /* Quiz copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -254,6 +362,7 @@
 			children = (
 				39565316159098FA00513FE3 /* Quiz.app */,
 				396FD9D215C80BF7005E03BD /* UnitTests.octest */,
+				396FDA7C15D044A7005E03BD /* Quiz Integration Test.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -429,6 +538,7 @@
 		396FD9FD15C85B1F005E03BD /* include */ = {
 			isa = PBXGroup;
 			children = (
+				396FDA1015D043C0005E03BD /* KIF.xcodeproj */,
 				396FD9FE15C85B1F005E03BD /* lib */,
 				396FDA0015C85B1F005E03BD /* OCMock */,
 			);
@@ -454,6 +564,19 @@
 				396FDA0615C85B1F005E03BD /* OCMockRecorder.h */,
 			);
 			path = OCMock;
+			sourceTree = "<group>";
+		};
+		396FDA9515D04BCE005E03BD /* IntegrationTest */ = {
+			isa = PBXGroup;
+			children = (
+				396FDA9615D04BF8005E03BD /* QuizTestController.h */,
+				396FDA9715D04BF8005E03BD /* QuizTestController.m */,
+				396FDA9815D04BF8005E03BD /* KIFTestScenario+Login.h */,
+				396FDA9915D04BF8005E03BD /* KIFTestScenario+Login.m */,
+				396FDA9A15D04BF8005E03BD /* KIFTestStep+Quiz.h */,
+				396FDA9B15D04BF8005E03BD /* KIFTestStep+Quiz.m */,
+			);
+			name = IntegrationTest;
 			sourceTree = "<group>";
 		};
 		39BC91C31593A5FD00DD669E /* util */ = {
@@ -572,6 +695,23 @@
 			productReference = 396FD9D215C80BF7005E03BD /* UnitTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		396FDA2B15D044A7005E03BD /* Kif Integration Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 396FDA7915D044A7005E03BD /* Build configuration list for PBXNativeTarget "Kif Integration Test" */;
+			buildPhases = (
+				396FDA2C15D044A7005E03BD /* Sources */,
+				396FDA4515D044A7005E03BD /* Frameworks */,
+				396FDA4D15D044A7005E03BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Kif Integration Test";
+			productName = Quiz;
+			productReference = 396FDA7C15D044A7005E03BD /* Quiz Integration Test.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -596,6 +736,7 @@
 			targets = (
 				39565315159098FA00513FE3 /* Quiz */,
 				396FD9D115C80BF7005E03BD /* UnitTests */,
+				396FDA2B15D044A7005E03BD /* Kif Integration Test */,
 			);
 		};
 /* End PBXProject section */
@@ -659,6 +800,56 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		396FDA4D15D044A7005E03BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				396FDA4E15D044A7005E03BD /* User.h in Resources */,
+				396FDA4F15D044A7005E03BD /* User.m in Resources */,
+				396FDA5015D044A7005E03BD /* Game.h in Resources */,
+				396FDA5115D044A7005E03BD /* Game.m in Resources */,
+				396FDA5215D044A7005E03BD /* Question.h in Resources */,
+				396FDA5315D044A7005E03BD /* Question.m in Resources */,
+				396FDA5415D044A7005E03BD /* Category.h in Resources */,
+				396FDA5515D044A7005E03BD /* Category.m in Resources */,
+				396FDA5615D044A7005E03BD /* Ranking.h in Resources */,
+				396FDA5715D044A7005E03BD /* Ranking.m in Resources */,
+				396FDA5815D044A7005E03BD /* InfoPlist.strings in Resources */,
+				396FDA5915D044A7005E03BD /* Default@2x.png in Resources */,
+				396FDA5A15D044A7005E03BD /* Default.png in Resources */,
+				396FDA5B15D044A7005E03BD /* RankingViewController.xib in Resources */,
+				396FDA5C15D044A7005E03BD /* CategoryViewController.xib in Resources */,
+				396FDA5D15D044A7005E03BD /* GameViewController.xib in Resources */,
+				396FDA5E15D044A7005E03BD /* botao_entrar.png in Resources */,
+				396FDA5F15D044A7005E03BD /* botao_jogar.png in Resources */,
+				396FDA6015D044A7005E03BD /* imagem_face_lateral_esquerda.png in Resources */,
+				396FDA6115D044A7005E03BD /* login_desenvolvido_por.png in Resources */,
+				396FDA6215D044A7005E03BD /* login_informe.png in Resources */,
+				396FDA6315D044A7005E03BD /* logo_inicial.png in Resources */,
+				396FDA6415D044A7005E03BD /* background.png in Resources */,
+				396FDA6515D044A7005E03BD /* background@2x.png in Resources */,
+				396FDA6615D044A7005E03BD /* ic_ranking.png in Resources */,
+				396FDA6715D044A7005E03BD /* fail.mp3 in Resources */,
+				396FDA6815D044A7005E03BD /* success.mp3 in Resources */,
+				396FDA6915D044A7005E03BD /* carinha.png in Resources */,
+				396FDA6A15D044A7005E03BD /* penguim.png in Resources */,
+				396FDA6B15D044A7005E03BD /* sid.png in Resources */,
+				396FDA6C15D044A7005E03BD /* logout.png in Resources */,
+				396FDA6D15D044A7005E03BD /* Localizable.strings in Resources */,
+				396FDA6E15D044A7005E03BD /* LoginViewController.xib in Resources */,
+				396FDA6F15D044A7005E03BD /* button_background.png in Resources */,
+				396FDA7015D044A7005E03BD /* snow.png in Resources */,
+				396FDA7115D044A7005E03BD /* PreferencesViewController.xib in Resources */,
+				396FDA7215D044A7005E03BD /* prefes.png in Resources */,
+				396FDA7315D044A7005E03BD /* PreferencesSwichtCell.xib in Resources */,
+				396FDA7415D044A7005E03BD /* PreferencesStepperCell.xib in Resources */,
+				396FDA7515D044A7005E03BD /* configuration.png in Resources */,
+				396FDA7615D044A7005E03BD /* map.png in Resources */,
+				396FDA7715D044A7005E03BD /* LocalizationViewController.xib in Resources */,
+				396FDA7815D044A7005E03BD /* snowman.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -714,6 +905,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				396FD9EB15C8152C005E03BD /* UserTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		396FDA2C15D044A7005E03BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				396FDA2D15D044A7005E03BD /* main.m in Sources */,
+				396FDA2E15D044A7005E03BD /* AppDelegate.m in Sources */,
+				396FDA2F15D044A7005E03BD /* LoginViewController.m in Sources */,
+				396FDA3015D044A7005E03BD /* User.m in Sources */,
+				396FDA3115D044A7005E03BD /* RankingViewController.m in Sources */,
+				396FDA3215D044A7005E03BD /* CategoryViewController.m in Sources */,
+				396FDA3315D044A7005E03BD /* GameViewController.m in Sources */,
+				396FDA3415D044A7005E03BD /* Game.m in Sources */,
+				396FDA3515D044A7005E03BD /* Question.m in Sources */,
+				396FDA3615D044A7005E03BD /* SoapConnection.m in Sources */,
+				396FDA3715D044A7005E03BD /* Category.m in Sources */,
+				396FDA3815D044A7005E03BD /* NSDictionary+JSON.m in Sources */,
+				396FDA3915D044A7005E03BD /* Ranking.m in Sources */,
+				396FDA3A15D044A7005E03BD /* LabelFormater.m in Sources */,
+				396FDA3B15D044A7005E03BD /* LocalizedButton.m in Sources */,
+				396FDA3C15D044A7005E03BD /* LocalizedTextField.m in Sources */,
+				396FDA3D15D044A7005E03BD /* LocalizedLabel.m in Sources */,
+				396FDA3E15D044A7005E03BD /* SnowView.m in Sources */,
+				396FDA3F15D044A7005E03BD /* PreferencesViewController.m in Sources */,
+				396FDA4015D044A7005E03BD /* Preference.m in Sources */,
+				396FDA4115D044A7005E03BD /* PreferencesSwichtCell.m in Sources */,
+				396FDA4215D044A7005E03BD /* PreferencesStepperCell.m in Sources */,
+				396FDA4315D044A7005E03BD /* LocalizationViewController.m in Sources */,
+				396FDA4415D044A7005E03BD /* UserAnnotation.m in Sources */,
+				396FDA9C15D04BF8005E03BD /* QuizTestController.m in Sources */,
+				396FDA9D15D04BF8005E03BD /* KIFTestScenario+Login.m in Sources */,
+				396FDA9E15D04BF8005E03BD /* KIFTestStep+Quiz.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,6 +1115,58 @@
 			};
 			name = Release;
 		};
+		396FDA7A15D044A7005E03BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Quiz/Quiz-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					RUN_KIF_TESTS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/IntegrationTests/Kif/**",
+				);
+				INFOPLIST_FILE = "Quiz copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "Quiz Integration Test";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		396FDA7B15D044A7005E03BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Quiz/Quiz-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					RUN_KIF_TESTS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/IntegrationTests/Kif/**",
+				);
+				INFOPLIST_FILE = "Quiz copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "Quiz Integration Test";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -918,6 +1195,15 @@
 				396FD9E215C80BF8005E03BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+		};
+		396FDA7915D044A7005E03BD /* Build configuration list for PBXNativeTarget "Kif Integration Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				396FDA7A15D044A7005E03BD /* Debug */,
+				396FDA7B15D044A7005E03BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -13,9 +13,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "39565315159098FA00513FE3"
-               BuildableName = "Quiz.app"
-               BlueprintName = "Quiz"
+               BlueprintIdentifier = "396FDA2B15D044A7005E03BD"
+               BuildableName = "Quiz copy.app"
+               BlueprintName = "Kif Integration Test"
                ReferencedContainer = "container:Quiz.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,23 +27,13 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "396FD9D115C80BF7005E03BD"
-               BuildableName = "UnitTests.octest"
-               BlueprintName = "UnitTests"
-               ReferencedContainer = "container:Quiz.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "39565315159098FA00513FE3"
-            BuildableName = "Quiz.app"
-            BlueprintName = "Quiz"
+            BlueprintIdentifier = "396FDA2B15D044A7005E03BD"
+            BuildableName = "Quiz copy.app"
+            BlueprintName = "Kif Integration Test"
             ReferencedContainer = "container:Quiz.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -60,9 +50,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "39565315159098FA00513FE3"
-            BuildableName = "Quiz.app"
-            BlueprintName = "Quiz"
+            BlueprintIdentifier = "396FDA2B15D044A7005E03BD"
+            BuildableName = "Quiz copy.app"
+            BlueprintName = "Kif Integration Test"
             ReferencedContainer = "container:Quiz.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -71,16 +61,16 @@
    </LaunchAction>
    <ProfileAction
       shouldUseLaunchSchemeArgsEnv = "YES"
-      savedToolIdentifier = "/Applications/Xcode.app/Contents/Applications/Instruments.app/Contents/Resources/templates/System Trace.tracetemplate"
+      savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "39565315159098FA00513FE3"
-            BuildableName = "Quiz.app"
-            BlueprintName = "Quiz"
+            BlueprintIdentifier = "396FDA2B15D044A7005E03BD"
+            BuildableName = "Quiz copy.app"
+            BlueprintName = "Kif Integration Test"
             ReferencedContainer = "container:Quiz.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

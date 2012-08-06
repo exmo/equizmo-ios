@@ -10,6 +10,10 @@
 
 #import "LoginViewController.h"
 
+#if RUN_KIF_TESTS
+#import "QuizTestController.h"
+#endif
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -26,6 +30,14 @@
     
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+#if RUN_KIF_TESTS
+    [[QuizTestController sharedInstance] startTestingWithCompletionBlock:^{
+        // Exit after the tests complete so that CI knows we're done
+        exit([[QuizTestController sharedInstance] failureCount]);
+    }];
+#endif
+    
     return YES;
 }
 
